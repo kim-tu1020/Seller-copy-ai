@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>셀러카피 AI (SellerCopy AI) - 스마트스토어·쿠팡 1분 상세페이지 & SEO 태그 생성기</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">SellerCopy AI</span>
+            <span class="text-[10px] uppercase font-bold bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded tracking-wider">MVP v1.0</span>
+          </div>
+          <p class="text-xs text-slate-500 hidden sm:block">스마트스토어·쿠팡 1인 셀러를 위한 초경량 AI 카피라이팅 & 태그 솔루션</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <!-- Usage Quota Pill -->
+        <div class="hidden md:flex items-center bg-slate-100 border border-slate-200/80 rounded-full px-3 py-1.5 text-xs text-slate-700">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
+          오늘 무료 크레딧: <strong id="header-quota-text" class="ml-1 text-blue-600 font-bold">5 / 5</strong>회
+        </div>
+
+        <button id="btn-open-history" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-medium flex items-center space-x-1" title="최근 생성 기록">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="hidden sm:inline">히스토리</span>
+        </button>
+
+        <button id="btn-open-bulk" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-medium flex items-center space-x-1" title="엑셀 대량 생성">
+          <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          <span class="hidden sm:inline">대량생성(Pro)</span>
+        </button>
+
+        <button id="btn-open-api" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-medium flex items-center space-x-1" title="API 설정">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span class="hidden sm:inline">API</span>
+        </button>
+
+        <button id="btn-open-upgrade" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-sm shadow-blue-500/20 transition-all flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span>Pro 사전신청</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner for Solo Sellers -->
+  <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border-b border-blue-100 py-2.5 px-4 text-center">
+    <p class="text-xs text-blue-900 font-medium flex items-center justify-center gap-1.5">
+      <span class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">NEW</span>
+      <span>스마트스토어 스마트에디터 ONE & 쿠팡 등록 규격에 100% 최적화된 서식과 검색 태그가 생성됩니다.</span>
+    </p>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- LEFT COLUMN: Input Form -->
+      <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            <h2 class="text-base font-bold text-slate-900">상품 정보 입력</h2>
+          </div>
+          <!-- Quick Presets -->
+          <div class="flex items-center space-x-1.5">
+            <span class="text-[11px] text-slate-400">예시:</span>
+            <button type="button" class="preset-btn text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="tumbler">텀블러</button>
+            <button type="button" class="preset-btn text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="earphones">무선이어폰</button>
+            <button type="button" class="preset-btn text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="pillow">경추베개</button>
+          </div>
+        </div>
+
+        <form id="generator-form" class="space-y-4">
+          <!-- Platform & Category Row -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="platform-select" class="block text-xs font-semibold text-slate-700 mb-1.5">등록 플랫폼</label>
+              <select id="platform-select" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+                <option value="naver">네이버 스마트스토어</option>
+                <option value="coupang">쿠팡 (로켓/마켓플레이스)</option>
+                <option value="common">자사몰 / 오픈마켓 공용</option>
+              </select>
+            </div>
+            <div>
+              <label for="category-select" class="block text-xs font-semibold text-slate-700 mb-1.5">카테고리</label>
+              <select id="category-select" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+                <option value="living">생활 / 주방용품</option>
+                <option value="digital">디지털 / 가전</option>
+                <option value="fashion">패션의류 / 잡화</option>
+                <option value="beauty">뷰티 / 헬스</option>
+                <option value="food">식품 / 건강식품</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Product Name -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="product-name" class="text-xs font-semibold text-slate-700">
+                상품명 <span class="text-red-500">*</span>
+              </label>
+              <span id="name-length" class="text-[11px] text-slate-400">0 / 50자 (쿠팡 권장 50자 이내)</span>
+            </div>
+            <input type="text" id="product-name" required placeholder="예: 스테인리스 보온보냉 대용량 스트로우 텀블러 900ml" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+          </div>
+
+          <!-- Key Features (3 items) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">
+              핵심 특장점 3가지 <span class="text-red-500">*</span>
+              <span class="text-[11px] font-normal text-slate-400 block sm:inline sm:ml-1">(스펙, 소재, 편리함 등)</span>
+            </label>
+            <div class="space-y-2">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                <input type="text" id="feature-1" required placeholder="예: 24시간 얼음 지속 이중 진공 보온보냉" class="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                <input type="text" id="feature-2" required placeholder="예: 304 최고급 식품용 스테인리스 재질 (녹/냄새 배임 방지)" class="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                <input type="text" id="feature-3" required placeholder="예: 완전 밀폐 실리콘 패킹 & 손잡이 일체형 디자인" class="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+              </div>
+            </div>
+          </div>
+
+          <!-- Target Audience & Pain Point -->
+          <div>
+            <label for="target-audience" class="block text-xs font-semibold text-slate-700 mb-1.5">
+              타깃 고객 및 겪고 있는 불편함 (선택)
+            </label>
+            <input type="text" id="target-audience" placeholder="예: 출퇴근길 커피가 미지근해져서 고민인 직장인, 헬스장 운동족" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+          </div>
+
+          <!-- Copywriting Tone -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">카피 톤앤매너</label>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="cursor-pointer border rounded-lg p-2 text-center transition-all border-slate-200 bg-slate-50 text-slate-600 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50 has-[:checked]:text-blue-700">
+                <input type="radio" name="copy-tone" value="hooking" checked class="sr-only">
+                <div class="text-xs font-bold">후킹·설득형</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">전환율 극대화</div>
+              </label>
+              <label class="cursor-pointer border rounded-lg p-2 text-center transition-all border-slate-200 bg-slate-50 text-slate-600 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50 has-[:checked]:text-blue-700">
+                <input type="radio" name="copy-tone" value="trust" class="sr-only">
+                <div class="text-xs font-bold">신뢰·전문형</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">품질·스펙 강조</div>
+              </label>
+              <label class="cursor-pointer border rounded-lg p-2 text-center transition-all border-slate-200 bg-slate-50 text-slate-600 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50 has-[:checked]:text-blue-700">
+                <input type="radio" name="copy-tone" value="emotional" class="sr-only">
+                <div class="text-xs font-bold">감성·공감형</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">일상 스토리텔링</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button type="submit" id="btn-generate" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm py-3.5 px-4 rounded-xl shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center space-x-2 disabled:opacity-50">
+              <svg id="generate-icon" class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              <span id="generate-text">✨ 3초 만에 상세페이지 카피 & SEO 태그 생성</span>
+            </button>
+            <p class="text-[11px] text-center text-slate-400 mt-2">
+              일일 무료 크레딧 1회 차감 (가입/카드 등록 불필요)
+            </p>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT COLUMN: Output & Results -->
+      <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 min-h-[580px] flex flex-col">
+
+        <!-- Top Output Bar & Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-xl">
+            <button type="button" class="tab-btn active text-xs font-bold px-3 py-1.5 rounded-lg transition-all bg-white text-blue-700 shadow-sm" data-tab="tab-copy">
+              상세페이지 카피
+            </button>
+            <button type="button" class="tab-btn text-xs font-medium px-3 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900" data-tab="tab-tags">
+              네이버 SEO 태그 <span id="tag-count-badge" class="ml-1 bg-blue-100 text-blue-700 text-[10px] font-bold px-1.5 py-0.2 rounded-full">10개</span>
+            </button>
+            <button type="button" class="tab-btn text-xs font-medium px-3 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900" data-tab="tab-coupang">
+              쿠팡 50자 상품명
+            </button>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button type="button" id="btn-copy-all" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3 py-1.5 rounded-lg transition-colors flex items-center space-x-1" disabled>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+              </svg>
+              <span>전체 복사</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Output Container -->
+        <div id="output-container" class="py-4 flex-1 flex flex-col justify-center">
+
+          <!-- 1. EMPTY STATE -->
+          <div id="state-empty" class="text-center py-12 px-4 max-w-md mx-auto">
+            <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            </div>
+            <h3 class="text-sm font-bold text-slate-800 mb-1">아직 생성된 카피가 없습니다</h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+              왼쪽 양식에 상품명과 핵심 스펙 3가지를 넣거나 상단의 [예시 버튼]을 누르고 생성 버튼을 클릭해 보세요.
+            </p>
+            <div class="inline-flex items-center text-[11px] text-blue-600 font-medium bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100">
+              💡 전환율 3.4% 검증된 PAS & AIDA 설득 공식 적용
+            </div>
+          </div>
+
+          <!-- 2. LOADING STATE -->
+          <div id="state-loading" class="hidden text-center py-16 px-4">
+            <div class="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-5"></div>
+            <h4 id="loading-step-title" class="text-sm font-bold text-slate-800 mb-1">상품 스펙과 카테고리 분석 중...</h4>
+            <p id="loading-step-desc" class="text-xs text-slate-500">네이버 스마트스토어 검색 알고리즘과 카테고리 매칭 중입니다</p>
+            <div class="w-48 bg-slate-100 rounded-full h-1.5 mx-auto mt-4 overflow-hidden">
+              <div id="loading-bar" class="bg-blue-600 h-1.5 rounded-full w-1/3 transition-all duration-500"></div>
+            </div>
+          </div>
+
+          <!-- 3. RESULT VIEW -->
+          <div id="state-results" class="hidden flex-1 flex flex-col space-y-4">
+
+            <!-- TAB 1: Detailed Copy -->
+            <div id="panel-tab-copy" class="space-y-4 flex-1">
+              <div class="bg-slate-50/80 rounded-xl border border-slate-200/80 p-4">
+                <div class="flex items-center justify-between mb-2.5">
+                  <span class="text-xs font-bold text-slate-800 flex items-center">
+                    <span class="text-blue-600 mr-1.5">🔥</span> 후킹 메인 헤드라인 3선 (클릭 시 선택)
+                  </span>
+                  <span class="text-[10px] text-slate-400">A/B 테스트용 추천</span>
+                </div>
+                <div class="space-y-2" id="headlines-container"></div>
+              </div>
+
+              <div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 relative">
+                <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xs font-bold text-slate-800">상세페이지 본문 (AIDA 구조)</span>
+                    <span class="text-[10px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded border border-emerald-200">스마트에디터 ONE 서식 호환</span>
+                  </div>
+                  <button type="button" id="btn-copy-body" class="text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold px-2.5 py-1 rounded transition-colors flex items-center space-x-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    <span>본문 복사</span>
+                  </button>
+                </div>
+                <div id="copy-body-content" class="text-xs text-slate-700 space-y-3 leading-relaxed max-h-[360px] overflow-y-auto pr-1 custom-scrollbar"></div>
+              </div>
+            </div>
+
+            <!-- TAB 2: SEO Tags -->
+            <div id="panel-tab-tags" class="hidden space-y-4">
+              <div class="bg-slate-50/80 rounded-xl border border-slate-200/80 p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-800">네이버 쇼핑 등록 가능 검증 태그 (10개)</h4>
+                    <p class="text-[11px] text-slate-500 mt-0.5">네이버 쇼핑 태그 사전에 일치하는 유효 검색어만 추출했습니다.</p>
+                  </div>
+                  <button type="button" id="btn-copy-tags" class="text-xs bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center space-x-1 shadow-sm">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    <span>쉼표형(,) 전체 복사</span>
+                  </button>
+                </div>
+                <div id="tags-chips-container" class="flex flex-wrap gap-2 pt-1"></div>
+                <div class="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 flex items-center justify-between">
+                  <span>💡 각 태그를 클릭하면 개별 복사됩니다.</span>
+                  <span class="text-emerald-600 font-semibold flex items-center">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    네이버 글자수(10자 이하) 전원 통과
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: Coupang Title -->
+            <div id="panel-tab-coupang" class="hidden space-y-4">
+              <div class="bg-slate-50/80 rounded-xl border border-slate-200/80 p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-800">쿠팡 알고리즘 최적화 상품명 (50자 엄수)</h4>
+                    <p class="text-[11px] text-slate-500 mt-0.5">중복 키워드 배제 & 필수 카테고리 속성어 포함</p>
+                  </div>
+                  <button type="button" id="btn-copy-coupang-title" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center space-x-1 shadow-sm">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    <span>상품명 복사</span>
+                  </button>
+                </div>
+                <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+                  <div id="coupang-title-text" class="text-xs font-bold text-slate-800 leading-relaxed"></div>
+                  <div class="mt-2.5 flex items-center justify-between text-[11px] text-slate-400">
+                    <span id="coupang-char-count">42자 / 50자 (안전 구간)</span>
+                    <span class="text-emerald-600 font-medium">노출 감점 페널티 없음</span>
+                  </div>
+                </div>
+                <div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-200/60 text-[11px] text-amber-800">
+                  <strong>쿠팡 랭킹 팁:</strong> 쿠팡은 상품명에 수식어('최고', '인기')가 들어가면 노출 우선순위가 떨어집니다. 브랜드명 + 핵심스펙 + 용량/수량 규격을 정확히 맞췄습니다.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- Pro Modal -->
+  <div id="modal-upgrade" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+      <div class="text-center mb-5">
+        <span class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </span>
+        <h3 class="text-lg font-extrabold text-slate-900">SellerCopy Pro 얼리버드 혜택</h3>
+        <p class="text-xs text-slate-500 mt-1">1인 셀러의 상품 등록 시간을 하루 10분으로 줄여드립니다</p>
+      </div>
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-5 space-y-2.5 text-xs text-slate-700">
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>일일 무제한</strong> 고품질 AI 카피 & SEO 생성</span></div>
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>엑셀 대량 업로드</strong> (한 번에 50개 상품 일괄 생성)</span></div>
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>네이버 실시간 급상승 쇼핑 키워드 매칭 엔진</span></div>
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>Claude 3.5 Sonnet & GPT-4o 프리미엄 엔진 우선 배정</span></div>
+      </div>
+      <div class="text-center mb-5">
+        <span class="text-xs text-slate-400 line-through">정가 월 29,000원</span>
+        <div class="text-2xl font-black text-blue-600 mt-0.5">월 9,900원 <span class="text-xs font-normal text-slate-500">(얼리버드 평생 할인)</span></div>
+      </div>
+      <div class="space-y-2">
+        <button type="button" id="btn-submit-waitlist" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-md text-xs">
+          얼리버드 50% 할인 대기자 신청하기 (0원)
+        </button>
+        <button type="button" class="btn-close-modal w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl transition-colors text-xs" data-target="modal-upgrade">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Modal -->
+  <div id="modal-history" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[80vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <h3 class="text-base font-bold text-slate-900 flex items-center">
+          <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          최근 생성 기록
+        </h3>
+        <button type="button" id="btn-clear-history" class="text-xs text-red-500 hover:text-red-700 font-medium">기록 전체 삭제</button>
+      </div>
+      <div id="history-list" class="space-y-2.5 overflow-y-auto flex-1 pr-1 custom-scrollbar"></div>
+      <div class="pt-4 border-t border-slate-100 mt-4">
+        <button type="button" class="btn-close-modal w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl transition-colors text-xs" data-target="modal-history">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Modal -->
+  <div id="modal-bulk" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="text-base font-extrabold text-slate-900">엑셀/CSV 대량 일괄 생성</h3>
+        <p class="text-xs text-slate-500 mt-1">상품 50개 리스트를 업로드하면 3분 만에 카피와 태그 엑셀 완성</p>
+      </div>
+      <div class="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center bg-slate-50/50 mb-4">
+        <p class="text-xs font-semibold text-slate-700">엑셀 (.xlsx, .csv) 파일 끌어다 놓기</p>
+        <p class="text-[11px] text-slate-400 mt-1">이 기능은 Pro 요금제 전용 기능입니다.</p>
+      </div>
+      <div class="space-y-2">
+        <button type="button" id="btn-bulk-to-pro" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl transition-all text-xs">
+          Pro 버전 신청하고 대량 생성 기능 열기
+        </button>
+        <button type="button" class="btn-close-modal w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2 rounded-xl transition-colors text-xs" data-target="modal-bulk">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Modal -->
+  <div id="modal-api" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center">
+          <svg class="w-4 h-4 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+          API 직접 연결 (BYOK)
+        </h3>
+        <button type="button" class="btn-close-modal text-slate-400 hover:text-slate-600" data-target="modal-api">✕</button>
+      </div>
+      <p class="text-xs text-slate-500 mb-4 leading-relaxed">자신의 OpenAI API 키를 입력하면 최신 모델로 직접 생성합니다. 키는 브라우저 내부에만 안전하게 저장됩니다.</p>
+      <div class="space-y-3 mb-5">
+        <div>
+          <label for="input-api-key" class="block text-xs font-semibold text-slate-700 mb-1">OpenAI API Key (선택)</label>
+          <input type="password" id="input-api-key" placeholder="sk-..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <p class="text-[11px] text-slate-400">* 키가 없어도 내장된 <strong>스마트 이커머스 템플릿 엔진</strong>으로 무료 생성됩니다.</p>
+      </div>
+      <div class="flex space-x-2">
+        <button type="button" id="btn-save-api" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition-colors">저장하기</button>
+        <button type="button" id="btn-clear-api" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold px-4 py-2 rounded-xl text-xs transition-colors">초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <svg id="toast-icon" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+    <span id="toast-message">클립보드에 복사되었습니다!</span>
+  </div>
+
+  <script>
+    (function() {
+      const STORAGE_KEY_QUOTA = 'sellercopy_quota_v1';
+      const STORAGE_KEY_HISTORY = 'sellercopy_history_v1';
+      const STORAGE_KEY_API = 'sellercopy_api_key_v1';
+
+      let currentQuota = 5;
+      let historyList = [];
+      let activeResult = null;
+
+      const headerQuotaText = document.getElementById('header-quota-text');
+      const form = document.getElementById('generator-form');
+      const productNameInput = document.getElementById('product-name');
+      const nameLengthText = document.getElementById('name-length');
+      const feature1Input = document.getElementById('feature-1');
+      const feature2Input = document.getElementById('feature-2');
+      const feature3Input = document.getElementById('feature-3');
+      const targetAudienceInput = document.getElementById('target-audience');
+      const platformSelect = document.getElementById('platform-select');
+      const categorySelect = document.getElementById('category-select');
+
+      const stateEmpty = document.getElementById('state-empty');
+      const stateLoading = document.getElementById('state-loading');
+      const stateResults = document.getElementById('state-results');
+      const btnCopyAll = document.getElementById('btn-copy-all');
+      const btnGenerate = document.getElementById('btn-generate');
+      const generateText = document.getElementById('generate-text');
+
+      const headlinesContainer = document.getElementById('headlines-container');
+      const copyBodyContent = document.getElementById('copy-body-content');
+      const tagsChipsContainer = document.getElementById('tags-chips-container');
+      const coupangTitleText = document.getElementById('coupang-title-text');
+      const coupangCharCount = document.getElementById('coupang-char-count');
+
+      function initState() {
+        try {
+          const savedQuota = localStorage.getItem(STORAGE_KEY_QUOTA);
+          if (savedQuota !== null) {
+            currentQuota = parseInt(savedQuota, 10);
+            if (isNaN(currentQuota)) currentQuota = 5;
+          }
+          const savedHistory = localStorage.getItem(STORAGE_KEY_HISTORY);
+          if (savedHistory) historyList = JSON.parse(savedHistory);
+        } catch (e) {}
+        updateQuotaDisplay();
+      }
+
+      function updateQuotaDisplay() {
+        if (headerQuotaText) headerQuotaText.textContent = `${currentQuota} / 5`;
+      }
+
+      function consumeQuota() {
+        if (currentQuota > 0) {
+          currentQuota -= 1;
+          try { localStorage.setItem(STORAGE_KEY_QUOTA, currentQuota.toString()); } catch (e) {}
+          updateQuotaDisplay();
+        }
+      }
+
+      function showToast(message, isSuccess = true) {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        toastMsg.textContent = message;
+        if (isSuccess) {
+          toastIcon.className = 'w-4 h-4 text-emerald-400';
+          toastIcon.innerHTML = '<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>';
+        } else {
+          toastIcon.className = 'w-4 h-4 text-amber-400';
+          toastIcon.innerHTML = '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>';
+        }
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+      }
+
+      function copyText(text, successMsg = '클립보드에 복사되었습니다!') {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopy(text, successMsg));
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        try {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          showToast(successMsg);
+        } catch (err) {
+          showToast('복사에 실패했습니다. 수동으로 복사해주세요.', false);
+        }
+      }
+
+      const presets = {
+        tumbler: {
+          name: "스테인리스 보온보냉 대용량 스트로우 텀블러 900ml",
+          category: "living",
+          f1: "24시간 얼음 지속 이중 진공 보온보냉",
+          f2: "304 최고급 식품용 스테인리스 재질 (녹/냄새 배임 방지)",
+          f3: "완전 밀폐 실리콘 패킹 & 손잡이 일체형 디자인",
+          target: "출퇴근길 얼음 커피가 미지근해져서 고민인 직장인, 운동족"
+        },
+        earphones: {
+          name: "초경량 노이즈캔슬링 무선 블루투스 이어폰 Pro",
+          category: "digital",
+          f1: "-45dB 하이브리드 액티브 노이즈 캔슬링 탑재",
+          f2: "단독 8시간, 케이스 포함 최대 36시간 연속 재생",
+          f3: "귀 안쪽 압박 없는 3.8g 초경량 인체공학 설계",
+          target: "지하철 대중교통 소음에 지친 직장인, 공부하는 수험생"
+        },
+        pillow: {
+          name: "인체공학 C커브 메모리폼 경추 기능성 숙면베개",
+          category: "living",
+          f1: "목 C커브를 빈틈없이 지지해주는 고밀도 메모리폼",
+          f2: "오염 방지 및 통기성 극대화 3D 매쉬 쿨링 커버",
+          f3: "옆으로 누워도 귀 눌림 없는 인체공학 이어홀 설계",
+          target: "아침마다 목과 어깨가 뻐근하고 잠을 설치는 현대인"
+        }
+      };
+
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = presets[btn.dataset.preset];
+          if (p) {
+            productNameInput.value = p.name;
+            categorySelect.value = p.category;
+            feature1Input.value = p.f1;
+            feature2Input.value = p.f2;
+            feature3Input.value = p.f3;
+            targetAudienceInput.value = p.target;
+            updateCharCount();
+            showToast('예시 데이터가 입력되었습니다.');
+          }
+        });
+      });
+
+      function updateCharCount() {
+        const len = productNameInput.value.length;
+        nameLengthText.textContent = `${len} / 50자 (쿠팡 권장 50자 이내)`;
+        nameLengthText.classList.toggle('text-red-500', len > 50);
+        nameLengthText.classList.toggle('font-bold', len > 50);
+      }
+      productNameInput.addEventListener('input', updateCharCount);
+
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => {
+            b.classList.remove('active', 'bg-white', 'text-blue-700', 'shadow-sm', 'font-bold');
+            b.classList.add('text-slate-600', 'font-medium');
+          });
+          btn.classList.add('active', 'bg-white', 'text-blue-700', 'shadow-sm', 'font-bold');
+          btn.classList.remove('text-slate-600', 'font-medium');
+
+          const target = btn.dataset.tab;
+          document.getElementById('panel-tab-copy').classList.toggle('hidden', target !== 'tab-copy');
+          document.getElementById('panel-tab-tags').classList.toggle('hidden', target !== 'tab-tags');
+          document.getElementById('panel-tab-coupang').classList.toggle('hidden', target !== 'tab-coupang');
+        });
+      });
+
+      function generateCopyData(formData) {
+        const { name, f1, f2, f3, target, platform, category, tone } = formData;
+        const targetClean = target || '일상의 질을 높이고 싶은 분';
+
+        let headlines = [
+          { type: "A안 (문제 공감 & 충격 해결)", text: `“아직도 미지근한 음료 마시며 스트레스 받으시나요?” 단 1번으로 끝내는 ${name}` },
+          { type: "B안 (압도적 혜택 & 숫자 강조)", text: `[만족도 98%] ${f1} 완벽 탑재! 하루 종일 변함없는 프리미엄 ${name}` },
+          { type: "C안 (사회적 증거 & 필수품 유도)", text: `출퇴근러 필수템 등극! ${f2} 기술로 완성된 화제의 ${name}` }
+        ];
+
+        if (tone === 'trust') {
+          headlines[0].text = `타협하지 않는 디테일. ${f2} 기반의 하이엔드 ${name}`;
+          headlines[1].text = `공인 검증 완료. ${f1}으로 증명하는 압도적 기술력`;
+          headlines[2].text = `스펙을 아는 분들의 선택. 내구성 1위 ${name}`;
+        } else if (tone === 'emotional') {
+          headlines[0].text = `바쁜 하루 끝, 나를 위해 준비한 작은 휴식. ${name}`;
+          headlines[1].text = `매일 손이 가는 편안함. ${targetClean}을 위한 특별한 선물`;
+          headlines[2].text = `공간을 채우는 따뜻한 온기, ${name}와 함께하는 온전한 시간`;
+        }
+
+        const bodyParagraphs = [
+          {
+            section: "1. Attention (문제 제기 & 공감)",
+            heading: `📍 왜 매번 실망하고 다시 찾아 헤매셨나요?`,
+            body: `매일 쓰는 제품인데, 쓰다 보면 슬그머니 찾아오는 잔고장과 불편함 때문에 후회하셨던 적 많으시죠? ${targetClean}이 겪는 진짜 고충을 해결하기 위해, 기본부터 완전히 새로 설계했습니다.`
+          },
+          {
+            section: "2. Interest & Desire (비교불가 3대 특장점)",
+            heading: `💡 [핵심 체크] 타사 제품과 확실히 다른 3가지`,
+            bullets: [
+              `✓ POINT 01 : ${f1} (더 이상 흉내 낼 수 없는 오리지널 성능)`,
+              `✓ POINT 02 : ${f2} (오래 써도 새것 같은 안심 소재)`,
+              `✓ POINT 03 : ${f3} (사용자의 작은 행동까지 고려한 인체공학 설계)`
+            ],
+            body: `눈속임 없는 정직한 원자재와 정밀 공정으로 완성했습니다. 직접 만져보는 순간 기존 제품들과의 마감 차이를 확연히 느끼실 수 있습니다.`
+          },
+          {
+            section: "3. Action (안심 구매 & 빠른 출고)",
+            heading: `🎁 지금 주문 시 안심 보증 & 빠른 출고 보장`,
+            body: `고민하는 시간은 배송만 늦출 뿐입니다. 꼼꼼한 3단계 품질 검수 후 에어캡 완충 포장으로 안전하게 발송해 드립니다. 지금 바로 구매하기를 누르시고 편리함을 경험해 보세요!`
+          }
+        ];
+
+        let coreWord = name.split(' ')[0] || '스마트스토어';
+        let tags = [coreWord, category === 'living' ? '보온텀블러' : '스마트용품', "직장인필수템", "가성비선물", "대용량보냉", "생활필수품", "인기신상품", "원룸자취템", "국내당일출고", "고급선물추천"];
+        if (category === 'digital') tags = [coreWord, "무선이어폰", "노캔이어폰", "블루투스5", "출퇴근필수", "음질좋은", "가성비이어폰", "통화품질", "수험생선물", "선물용추천"];
+        else if (category === 'fashion') tags = [coreWord, "데일리룩", "봄신상", "오피스룩", "트렌드아이템", "체형커버", "데이트룩", "고급소재", "하객룩", "가성비쇼핑"];
+
+        let coupangTitle = `[공식] ${name} (${f1.substring(0, 12)})`;
+        if (coupangTitle.length > 50) coupangTitle = coupangTitle.substring(0, 48);
+
+        return {
+          headlines,
+          bodyParagraphs,
+          tags,
+          coupangTitle,
+          timestamp: new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })
+        };
+      }
+
+      function renderResults(data) {
+        activeResult = data;
+        headlinesContainer.innerHTML = '';
+        data.headlines.forEach((item) => {
+          const div = document.createElement('div');
+          div.className = 'group border border-slate-200/90 hover:border-blue-500 bg-white p-3 rounded-lg cursor-pointer transition-all flex items-start justify-between space-x-2';
+          div.innerHTML = `
+            <div>
+              <span class="text-[10px] font-bold text-blue-600 block mb-0.5">${item.type}</span>
+              <p class="text-xs text-slate-800 font-semibold leading-snug">${item.text}</p>
+            </div>
+            <button type="button" class="btn-copy-headline shrink-0 text-[11px] text-slate-400 group-hover:text-blue-600 p-1 hover:bg-blue-50 rounded">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </button>
+          `;
+          div.querySelector('.btn-copy-headline').addEventListener('click', (e) => {
+            e.stopPropagation();
+            copyText(item.text, '헤드라인이 복사되었습니다.');
+          });
+          div.addEventListener('click', () => copyText(item.text, '헤드라인이 복사되었습니다.'));
+          headlinesContainer.appendChild(div);
+        });
+
+        copyBodyContent.innerHTML = '';
+        data.bodyParagraphs.forEach(p => {
+          const block = document.createElement('div');
+          block.className = 'p-3 bg-slate-50/60 rounded-lg border border-slate-100';
+          let innerHtml = `<div class="text-[11px] font-bold text-blue-700 mb-1">${p.section}</div><div class="text-xs font-extrabold text-slate-900 mb-1.5">${p.heading}</div>`;
+          if (p.bullets) {
+            innerHtml += `<ul class="space-y-1 mb-2 text-slate-700">`;
+            p.bullets.forEach(b => innerHtml += `<li class="font-medium">${b}</li>`);
+            innerHtml += `</ul>`;
+          }
+          innerHtml += `<p class="text-slate-600">${p.body}</p>`;
+          block.innerHTML = innerHtml;
+          copyBodyContent.appendChild(block);
+        });
+
+        tagsChipsContainer.innerHTML = '';
+        data.tags.forEach(tag => {
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'inline-flex items-center text-xs bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-semibold px-2.5 py-1.5 rounded-lg shadow-2xs transition-all';
+          chip.innerHTML = `#${tag} <span class="ml-1 text-[10px] text-slate-400">복사</span>`;
+          chip.addEventListener('click', () => copyText(tag, `#${tag} 태그가 복사되었습니다.`));
+          tagsChipsContainer.appendChild(chip);
+        });
+
+        coupangTitleText.textContent = data.coupangTitle;
+        coupangCharCount.textContent = `${data.coupangTitle.length}자 / 50자 (안전 구간)`;
+
+        historyList.unshift({ id: Date.now(), name: productNameInput.value, headline: data.headlines[0].text, time: data.timestamp, data: data });
+        if (historyList.length > 20) historyList.pop();
+        try { localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(historyList)); } catch (e) {}
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (currentQuota <= 0) {
+          openModal('modal-upgrade');
+          showToast('오늘의 무료 크레딧이 모두 소진되었습니다. Pro를 신청하세요.', false);
+          return;
+        }
+
+        const formData = {
+          name: productNameInput.value.trim(),
+          f1: feature1Input.value.trim(),
+          f2: feature2Input.value.trim(),
+          f3: feature3Input.value.trim(),
+          target: targetAudienceInput.value.trim(),
+          platform: platformSelect.value,
+          category: categorySelect.value,
+          tone: document.querySelector('input[name="copy-tone"]:checked').value
+        };
+
+        stateEmpty.classList.add('hidden');
+        stateResults.classList.add('hidden');
+        stateLoading.classList.remove('hidden');
+        btnGenerate.disabled = true;
+        generateText.textContent = '카피 및 태그 생성 중...';
+
+        const stepTitle = document.getElementById('loading-step-title');
+        const stepDesc = document.getElementById('loading-step-desc');
+        const loadBar = document.getElementById('loading-bar');
+
+        loadBar.style.width = '30%';
+        stepTitle.textContent = '1/3 상품 스펙 및 타깃 페인포인트 분석 중...';
+
+        setTimeout(() => {
+          loadBar.style.width = '70%';
+          stepTitle.textContent = '2/3 네이버 쇼핑 검색 알고리즘 태그 매칭 중...';
+          stepDesc.textContent = '전환율 높은 헤드카피 3종과 스마트에디터 서식을 구성합니다.';
+        }, 800);
+
+        setTimeout(() => {
+          loadBar.style.width = '100%';
+          stepTitle.textContent = '3/3 쿠팡 50자 규격 및 최종 검수 완료!';
+        }, 1500);
+
+        setTimeout(() => {
+          consumeQuota();
+          const results = generateCopyData(formData);
+          stateLoading.classList.add('hidden');
+          stateResults.classList.remove('hidden');
+          btnGenerate.disabled = false;
+          generateText.textContent = '✨ 3초 만에 상세페이지 카피 & SEO 태그 생성';
+          btnCopyAll.disabled = false;
+          renderResults(results);
+          showToast('카피 생성이 완료되었습니다! (무료 크레딧 1회 사용)');
+        }, 2000);
+      });
+
+      btnCopyAll.addEventListener('click', () => {
+        if (!activeResult) return;
+        let allText = `[메인 헤드카피 추천]\n1) ${activeResult.headlines[0].text}\n2) ${activeResult.headlines[1].text}\n3) ${activeResult.headlines[2].text}\n\n[상세페이지 본문 (스마트에디터 ONE 서식)]\n`;
+        activeResult.bodyParagraphs.forEach(p => {
+          allText += `\n${p.heading}\n`;
+          if (p.bullets) p.bullets.forEach(b => allText += `${b}\n`);
+          allText += `${p.body}\n`;
+        });
+        allText += `\n[네이버 쇼핑 등록 태그]\n${activeResult.tags.join(', ')}\n\n[쿠팡 상품명]\n${activeResult.coupangTitle}`;
+        copyText(allText, '전체 결과물이 클립보드에 복사되었습니다!');
+      });
+
+      document.getElementById('btn-copy-body').addEventListener('click', () => {
+        if (!activeResult) return;
+        let text = '';
+        activeResult.bodyParagraphs.forEach(p => {
+          text += `\n${p.heading}\n`;
+          if (p.bullets) p.bullets.forEach(b => text += `${b}\n`);
+          text += `${p.body}\n`;
+        });
+        copyText(text.trim(), '상세페이지 본문이 복사되었습니다!');
+      });
+
+      document.getElementById('btn-copy-tags').addEventListener('click', () => {
+        if (!activeResult) return;
+        copyText(activeResult.tags.join(', '), '10개 검색 태그가 쉼표형식으로 복사되었습니다!');
+      });
+
+      document.getElementById('btn-copy-coupang-title').addEventListener('click', () => {
+        if (!activeResult) return;
+        copyText(activeResult.coupangTitle, '쿠팡 상품명이 복사되었습니다!');
+      });
+
+      function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+      function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+      document.querySelectorAll('.btn-close-modal').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(btn.dataset.target));
+      });
+
+      document.getElementById('btn-open-upgrade').addEventListener('click', () => openModal('modal-upgrade'));
+      document.getElementById('btn-open-bulk').addEventListener('click', () => openModal('modal-bulk'));
+      document.getElementById('btn-bulk-to-pro').addEventListener('click', () => {
+        closeModal('modal-bulk');
+        openModal('modal-upgrade');
+      });
+      document.getElementById('btn-open-api').addEventListener('click', () => {
+        try { document.getElementById('input-api-key').value = localStorage.getItem(STORAGE_KEY_API) || ''; } catch (e) {}
+        openModal('modal-api');
+      });
+
+      document.getElementById('btn-save-api').addEventListener('click', () => {
+        const key = document.getElementById('input-api-key').value.trim();
+        try { localStorage.setItem(STORAGE_KEY_API, key); } catch (e) {}
+        closeModal('modal-api');
+        showToast(key ? 'API 키가 안전하게 저장되었습니다.' : 'API 키 설정이 초기화되었습니다.');
+      });
+
+      document.getElementById('btn-clear-api').addEventListener('click', () => {
+        document.getElementById('input-api-key').value = '';
+        try { localStorage.removeItem(STORAGE_KEY_API); } catch (e) {}
+        showToast('API 키가 삭제되었습니다.');
+      });
+
+      document.getElementById('btn-submit-waitlist').addEventListener('click', () => {
+        closeModal('modal-upgrade');
+        showToast('얼리버드 50% 할인 대기자 등록이 완료되었습니다! (출시 시 알림)', true);
+      });
+
+      document.getElementById('btn-open-history').addEventListener('click', () => {
+        renderHistoryList();
+        openModal('modal-history');
+      });
+
+      function renderHistoryList() {
+        const listContainer = document.getElementById('history-list');
+        listContainer.innerHTML = '';
+        if (historyList.length === 0) {
+          listContainer.innerHTML = '<p class="text-xs text-slate-400 text-center py-8">아직 생성된 히스토리가 없습니다.</p>';
+          return;
+        }
+
+        historyList.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'p-3 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200 transition-all flex items-center justify-between';
+          div.innerHTML = `
+            <div class="overflow-hidden pr-2">
+              <div class="text-xs font-bold text-slate-800 truncate">${item.name}</div>
+              <div class="text-[11px] text-slate-500 truncate mt-0.5">${item.headline}</div>
+              <div class="text-[10px] text-slate-400 mt-1">${item.time}</div>
+            </div>
+            <button type="button" class="btn-load-history text-xs bg-white border border-slate-200 hover:border-blue-600 hover:text-blue-600 font-bold px-2.5 py-1.5 rounded-lg shrink-0">
+              불러오기
+            </button>
+          `;
+          div.querySelector('.btn-load-history').addEventListener('click', () => {
+            renderResults(item.data);
+            stateEmpty.classList.add('hidden');
+            stateLoading.classList.add('hidden');
+            stateResults.classList.remove('hidden');
+            btnCopyAll.disabled = false;
+            closeModal('modal-history');
+            showToast('이전 생성 결과물을 성공적으로 불러왔습니다.');
+          });
+          listContainer.appendChild(div);
+        });
+      }
+
+      document.getElementById('btn-clear-history').addEventListener('click', () => {
+        historyList = [];
+        try { localStorage.removeItem(STORAGE_KEY_HISTORY); } catch (e) {}
+        renderHistoryList();
+        showToast('히스토리가 모두 삭제되었습니다.');
+      });
+
+      initState();
+    })();
+  </script>
+</body>
+</html>
