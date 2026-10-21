@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>셀러카피 AI (SellerCopy AI) - 스마트스토어·쿠팡 1분 상세페이지 & SEO 태그 생성기</title>
+  <title>셀러카피 AI (SellerCopy AI) - 1인 셀러 가상 AI 오피스 & 상세페이지·마케팅 자동화</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,11 +44,11 @@
             <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">SellerCopy AI</span>
             <span id="ai-engine-badge" class="text-[10px] uppercase font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded tracking-wider">스마트 엔진</span>
           </div>
-          <p class="text-xs text-slate-500 hidden sm:block">스마트스토어·쿠팡 1인 셀러를 위한 초경량 AI 카피라이팅 & 태그 솔루션</p>
+          <p class="text-xs text-slate-500 hidden sm:block">1인 셀러를 위한 가상 AI 오피스 & 카피·마케팅 솔루션</p>
         </div>
       </div>
 
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-2 sm:space-x-3">
         <!-- Usage Quota Pill -->
         <div class="hidden md:flex items-center bg-slate-100 border border-slate-200/80 rounded-full px-3 py-1.5 text-xs text-slate-700">
           <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
@@ -62,18 +62,20 @@
           <span class="hidden sm:inline">히스토리</span>
         </button>
 
-        <button id="btn-open-bulk" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-medium flex items-center space-x-1" title="엑셀 대량 생성">
-          <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        <!-- Admin Approval Button (For Owner) -->
+        <button id="btn-open-admin" class="p-2 text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 rounded-lg transition-colors text-xs font-semibold flex items-center space-x-1.5" title="대표님 전용 결제 승인 관리함">
+          <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
           </svg>
-          <span class="hidden sm:inline">대량생성(Pro)</span>
+          <span class="hidden sm:inline">승인함</span>
+          <span id="badge-admin-count" class="bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">0</span>
         </button>
 
         <button id="btn-open-api" class="p-2 text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-xs font-semibold flex items-center space-x-1" title="무료 Gemini API 연동">
           <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
           </svg>
-          <span id="btn-api-text">Gemini API 연동</span>
+          <span id="btn-api-text" class="hidden sm:inline">Gemini API</span>
         </button>
 
         <button id="btn-open-upgrade" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-sm shadow-blue-500/20 transition-all flex items-center space-x-1.5">
@@ -89,15 +91,46 @@
   <!-- Banner for Solo Sellers -->
   <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border-b border-blue-100 py-2.5 px-4 text-center">
     <p class="text-xs text-blue-900 font-medium flex items-center justify-center gap-1.5">
-      <span class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">안내</span>
-      <span>구글 Gemini 무료 API 키를 등록하면 실시간 최신 AI가 실시간으로 고품질 카피를 작성합니다.</span>
+      <span class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">가상 오피스</span>
+      <span>1인 셀러를 위한 4대 전문 AI 직원(카피라이터·마케터·CS실장·정산대리)이 상시 대기 중입니다.</span>
     </p>
   </div>
 
   <!-- Main Content Layout -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
+    <!-- 1. AI VIRTUAL OFFICE ROLE SELECTOR BAR -->
+    <div class="mb-6 bg-white p-3 rounded-2xl border border-slate-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-bold text-slate-800 flex items-center whitespace-nowrap">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
+          🏢 AI 직원 선택:
+        </span>
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 md:pb-0 custom-scrollbar w-full">
+          <button type="button" class="role-btn active text-xs font-bold px-3 py-1.5 rounded-xl transition-all bg-blue-600 text-white shadow-sm flex items-center space-x-1 shrink-0" data-role="copywriter">
+            <span>✍️ 상세 카피라이터</span>
+          </button>
+          <button type="button" class="role-btn text-xs font-semibold px-3 py-1.5 rounded-xl transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center space-x-1 shrink-0" data-role="marketer">
+            <span>🔥 AI 마케터 김팀장</span>
+            <span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.2 rounded-full font-extrabold">NEW</span>
+          </button>
+          <button type="button" class="role-btn text-xs font-semibold px-3 py-1.5 rounded-xl transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center space-x-1 shrink-0" data-role="cs">
+            <span>🛡️ CS 방어 박실장</span>
+          </button>
+          <button type="button" class="role-btn text-xs font-semibold px-3 py-1.5 rounded-xl transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center space-x-1 shrink-0" data-role="margin">
+            <span>📊 정산 최대리 (마진 계산)</span>
+          </button>
+        </div>
+      </div>
+      <div id="role-desc-text" class="text-[11px] text-slate-500 md:text-right">
+        * 네이버 스마트스토어 & 쿠팡 전환율 최적화 카피와 10개 태그를 생성합니다.
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- ROLE 1: COPYWRITER SECTION (기존 메인) -->
+    <!-- ======================================================== -->
+    <div id="section-role-copywriter" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       <!-- LEFT COLUMN: Input Form -->
       <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
         <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
@@ -217,7 +250,6 @@
 
       <!-- RIGHT COLUMN: Output & Results -->
       <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 min-h-[580px] flex flex-col">
-
         <!-- Top Output Bar & Tabs -->
         <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
           <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-xl">
@@ -244,7 +276,6 @@
 
         <!-- Dynamic Output Container -->
         <div id="output-container" class="py-4 flex-1 flex flex-col justify-center">
-
           <!-- 1. EMPTY STATE -->
           <div id="state-empty" class="text-center py-12 px-4 max-w-md mx-auto">
             <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4 shadow-sm">
@@ -273,7 +304,6 @@
 
           <!-- 3. RESULT VIEW -->
           <div id="state-results" class="hidden flex-1 flex flex-col space-y-4">
-
             <!-- TAB 1: Detailed Copy -->
             <div id="panel-tab-copy" class="space-y-4 flex-1">
               <div class="bg-slate-50/80 rounded-xl border border-slate-200/80 p-4">
@@ -352,48 +382,363 @@
             </div>
 
           </div>
+        </div>
+      </section>
+    </div>
 
+    <!-- ======================================================== -->
+    <!-- ROLE 2: MARKETER SECTION (AI 마케터 김팀장) -->
+    <!-- ======================================================== -->
+    <div id="section-role-marketer" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Input -->
+      <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <div>
+              <h2 class="text-base font-bold text-slate-900">AI 마케터 김팀장 기획서</h2>
+              <p class="text-[11px] text-slate-400">30초 릴스 대본 + 인스타 피드 + 블로그 체험단 소구점</p>
+            </div>
+          </div>
         </div>
 
+        <form id="marketer-form" class="space-y-4">
+          <div>
+            <label for="mk-product-name" class="block text-xs font-semibold text-slate-700 mb-1">홍보할 상품명 <span class="text-red-500">*</span></label>
+            <input type="text" id="mk-product-name" required placeholder="예: 24시간 얼음 지속 대용량 보온보냉 텀블러" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label for="mk-feature" class="block text-xs font-semibold text-slate-700 mb-1">가장 강조할 1등 특장점 (시각적 차별점) <span class="text-red-500">*</span></label>
+            <input type="text" id="mk-feature" required placeholder="예: 하루 종일 얼음이 안 녹고, 흔들어도 가방에 1방울도 안 샘" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label for="mk-target" class="block text-xs font-semibold text-slate-700 mb-1">핵심 타깃</label>
+            <input type="text" id="mk-target" placeholder="예: 출퇴근길 아아 미지근해지는 거 극혐하는 2030 직장인" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">콘텐츠 바이럴 포커스</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer border rounded-lg p-2 text-center transition-all border-slate-200 bg-slate-50 text-slate-600 has-[:checked]:border-red-600 has-[:checked]:bg-red-50/50 has-[:checked]:text-red-700">
+                <input type="radio" name="mk-focus" value="shock" checked class="sr-only">
+                <div class="text-xs font-bold">충격 비교·실험형</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">조회수 떡상용 릴스</div>
+              </label>
+              <label class="cursor-pointer border rounded-lg p-2 text-center transition-all border-slate-200 bg-slate-50 text-slate-600 has-[:checked]:border-red-600 has-[:checked]:bg-red-50/50 has-[:checked]:text-red-700">
+                <input type="radio" name="mk-focus" value="daily" class="sr-only">
+                <div class="text-xs font-bold">일상 공감·꿀템형</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">댓글·저장 유도형</div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-mk-generate" class="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-sm py-3.5 px-4 rounded-xl shadow-lg shadow-rose-500/25 transition-all flex items-center justify-center space-x-2">
+            <span>🔥 김팀장! 30초 릴스 대본 & SNS 카피 뽑아줘</span>
+          </button>
+        </form>
       </section>
 
+      <!-- Output -->
+      <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 min-h-[580px] flex flex-col">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-bold text-slate-800">🎬 김팀장의 실전 바이럴 마케팅 패키지</span>
+          </div>
+          <button type="button" id="btn-copy-mk-all" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3 py-1.5 rounded-lg transition-colors" disabled>
+            전체 복사
+          </button>
+        </div>
+
+        <div id="mk-output-empty" class="text-center py-16 px-4">
+          <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-3">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-1">마케팅 패키지 대기 중</h3>
+          <p class="text-xs text-slate-500">왼쪽에서 상품명과 핵심 소구점을 입력하고 생성해 보세요.</p>
+        </div>
+
+        <div id="mk-output-result" class="hidden space-y-4 overflow-y-auto max-h-[520px] pr-1 custom-scrollbar">
+          <!-- 1. 30s Reels Script -->
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-rose-700 flex items-center">
+                <span class="mr-1.5">🎬</span> 30초 숏폼 릴스/쇼츠 촬영 대본
+              </span>
+              <button type="button" class="btn-copy-box text-[11px] text-blue-600 hover:underline" data-target="mk-reels-text">대본 복사</button>
+            </div>
+            <div id="mk-reels-text" class="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed font-mono bg-white p-3 rounded-lg border border-slate-200"></div>
+          </div>
+
+          <!-- 2. Instagram Caption -->
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-blue-700 flex items-center">
+                <span class="mr-1.5">📸</span> 인스타그램 피드 카피 & 해시태그 15선
+              </span>
+              <button type="button" class="btn-copy-box text-[11px] text-blue-600 hover:underline" data-target="mk-insta-text">피드 복사</button>
+            </div>
+            <div id="mk-insta-text" class="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed bg-white p-3 rounded-lg border border-slate-200"></div>
+          </div>
+
+          <!-- 3. Review Talk -->
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-emerald-700 flex items-center">
+                <span class="mr-1.5">💌</span> 구매 고객 리뷰 작성 유도 알림톡 (별점 5점 회수용)
+              </span>
+              <button type="button" class="btn-copy-box text-[11px] text-blue-600 hover:underline" data-target="mk-review-text">알림톡 복사</button>
+            </div>
+            <div id="mk-review-text" class="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed bg-white p-3 rounded-lg border border-slate-200"></div>
+          </div>
+        </div>
+      </section>
     </div>
+
+    <!-- ======================================================== -->
+    <!-- ROLE 3: CS SECTION (CS 방어 박실장) -->
+    <!-- ======================================================== -->
+    <div id="section-role-cs" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Input -->
+      <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <div>
+              <h2 class="text-base font-bold text-slate-900">CS 방어 박실장 솔루션</h2>
+              <p class="text-[11px] text-slate-400">악성 1점 리뷰 & 반품 분쟁 방어 답변서</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="cs-form" class="space-y-4">
+          <div class="flex items-center space-x-1.5">
+            <span class="text-[11px] text-slate-400">상황 예시:</span>
+            <button type="button" class="cs-preset-btn text-[11px] bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="damage">포장파손</button>
+            <button type="button" class="cs-preset-btn text-[11px] bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="delay">배송지연</button>
+            <button type="button" class="cs-preset-btn text-[11px] bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-2 py-1 rounded transition-colors" data-preset="change">단순변심</button>
+          </div>
+
+          <div>
+            <label for="cs-complaint-input" class="block text-xs font-semibold text-slate-700 mb-1">고객 불만 내용 / 악성 리뷰 원문 <span class="text-red-500">*</span></label>
+            <textarea id="cs-complaint-input" required rows="5" placeholder="고객이 남긴 불만 리뷰나 톡톡/Q&A 문의를 그대로 복사해 넣으세요." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 leading-relaxed"></textarea>
+          </div>
+
+          <div>
+            <label for="cs-store-name" class="block text-xs font-semibold text-slate-700 mb-1">내 스토어명 / 브랜드명</label>
+            <input type="text" id="cs-store-name" placeholder="예: 데일리라이프 스토어" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+
+          <button type="submit" id="btn-cs-generate" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-sm py-3.5 px-4 rounded-xl shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center space-x-2">
+            <span>🛡️ 박실장! 멘탈 안 털리게 정중한 방어 답변 써줘</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Output -->
+      <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 min-h-[580px] flex flex-col">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+          <span class="text-xs font-bold text-slate-800">🛡️ 박실장의 상황별 맞춤 대응 답변 2종</span>
+        </div>
+
+        <div id="cs-output-empty" class="text-center py-16 px-4">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-3">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-1">CS 답변 대기 중</h3>
+          <p class="text-xs text-slate-500">악성 리뷰나 불만 내용을 넣으면 타 고객에게 신뢰를 주는 모범 답안이 나옵니다.</p>
+        </div>
+
+        <div id="cs-output-result" class="hidden space-y-4 overflow-y-auto max-h-[520px] pr-1 custom-scrollbar">
+          <!-- Plan A -->
+          <div class="bg-emerald-50/60 rounded-xl p-4 border border-emerald-200/70">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-emerald-800 flex items-center">
+                🤝 [A안] 진정성 공감 사과 & 교환/재구매 유도형 (단골 확보용)
+              </span>
+              <button type="button" class="btn-copy-box text-[11px] text-emerald-700 font-bold bg-white px-2 py-1 rounded border border-emerald-200 hover:bg-emerald-50" data-target="cs-ans-a">A안 복사</button>
+            </div>
+            <div id="cs-ans-a" class="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed bg-white p-3 rounded-lg border border-emerald-100"></div>
+          </div>
+
+          <!-- Plan B -->
+          <div class="bg-blue-50/60 rounded-xl p-4 border border-blue-200/70">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-blue-800 flex items-center">
+                ⚖️ [B안] 스토어 규정 안내 & 단호한 방어형 (타 잠재고객 신뢰 확보용)
+              </span>
+              <button type="button" class="btn-copy-box text-[11px] text-blue-700 font-bold bg-white px-2 py-1 rounded border border-blue-200 hover:bg-blue-50" data-target="cs-ans-b">B안 복사</button>
+            </div>
+            <div id="cs-ans-b" class="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed bg-white p-3 rounded-lg border border-blue-100"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- ROLE 4: MARGIN SECTION (정산 최대리 - 마진 계산기) -->
+    <!-- ======================================================== -->
+    <div id="section-role-margin" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Input -->
+      <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+            <div>
+              <h2 class="text-base font-bold text-slate-900">정산 최대리의 마진 영수증</h2>
+              <p class="text-[11px] text-slate-400">수수료 공제 후 실수령액 & 역마진 방지 계산</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="margin-form" class="space-y-4">
+          <div>
+            <label for="mg-platform" class="block text-xs font-semibold text-slate-700 mb-1">판매 플랫폼</label>
+            <select id="mg-platform" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="0.056">네이버 스마트스토어 (약 5.6% - 연동+결제수수료)</option>
+              <option value="0.108">쿠팡 마켓플레이스 (약 10.8% - 카테고리 평균)</option>
+              <option value="0.25">쿠팡 로켓그로스 / 제트배송 (약 25% 보관/배송 포함)</option>
+              <option value="0.033">자사몰 / 카페24 PG사 (약 3.3%)</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="mg-sell-price" class="block text-xs font-semibold text-slate-700 mb-1">소비자 판매가 (원) <span class="text-red-500">*</span></label>
+              <input type="number" id="mg-sell-price" value="29900" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <div>
+              <label for="mg-cost-price" class="block text-xs font-semibold text-slate-700 mb-1">도매 매입원가 (원) <span class="text-red-500">*</span></label>
+              <input type="number" id="mg-cost-price" value="12000" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="mg-cust-ship" class="block text-xs font-semibold text-slate-700 mb-1">고객부담 배송비 (원)</label>
+              <input type="number" id="mg-cust-ship" value="3000" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <div>
+              <label for="mg-real-ship" class="block text-xs font-semibold text-slate-700 mb-1">실제 택배 계약비 (원)</label>
+              <input type="number" id="mg-real-ship" value="2800" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <div>
+            <label for="mg-pack-cost" class="block text-xs font-semibold text-slate-700 mb-1">박스/에어캡 포장 부자재비 (원)</label>
+            <input type="number" id="mg-pack-cost" value="400" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100 text-[11px] text-emerald-800">
+            💡 값을 변경하면 우측 정산서에 실시간으로 순마진이 1초 만에 자동 계산됩니다.
+          </div>
+        </form>
+      </section>
+
+      <!-- Output Receipt Card -->
+      <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 min-h-[580px] flex flex-col justify-center">
+        <div class="max-w-md mx-auto w-full bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="text-center pb-4 border-b border-dashed border-slate-300 mb-4">
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded uppercase">최대리의 순익 정산서</span>
+            <div class="text-3xl font-black text-slate-900 mt-2" id="res-net-profit">12,650원</div>
+            <p class="text-xs text-slate-500 mt-1">1건 판매당 순수 내 주머니로 들어오는 돈</p>
+          </div>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-5">
+            <div class="flex justify-between"><span>총 매출액 (판매가+고객배송비)</span><strong id="res-total-rev">32,900원</strong></div>
+            <div class="flex justify-between text-red-600"><span>(-) 플랫폼 수수료</span><strong id="res-fee">-1,842원</strong></div>
+            <div class="flex justify-between text-slate-600"><span>(-) 상품 매입 원가</span><strong id="res-cost">-12,000원</strong></div>
+            <div class="flex justify-between text-slate-600"><span>(-) 실제 택배 계약비</span><strong id="res-ship">-2,800원</strong></div>
+            <div class="flex justify-between text-slate-600"><span>(-) 포장 부자재비</span><strong id="res-pack">-400원</strong></div>
+            <div class="flex justify-between text-slate-400"><span>(-) 부가세 예상액</span><strong id="res-vat">-3,208원</strong></div>
+          </div>
+
+          <div class="pt-4 border-t border-dashed border-slate-300 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-800">최종 순마진율</span>
+              <span id="res-margin-rate" class="text-lg font-black text-emerald-600">38.4%</span>
+            </div>
+            <!-- Safety Pill -->
+            <div id="res-margin-badge" class="p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-bold text-center">
+              🟢 매우 안전한 마진 구조입니다 (목표 마진 25% 초과 달성)
+            </div>
+            <div class="text-[11px] text-slate-500 text-center">
+              * 최소 20% 이상의 마진율을 유지해야 광고비 및 반품 손실을 방어할 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </main>
 
+  <!-- ======================================================== -->
   <!-- MODALS -->
+  <!-- ======================================================== -->
 
-  <!-- Pro Modal -->
+  <!-- Pro Modal (대표님 승인제 결제 프로세스) -->
   <div id="modal-upgrade" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
-      <div class="text-center mb-5">
+      <div class="text-center mb-4">
         <span class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </span>
-        <h3 class="text-lg font-extrabold text-slate-900">SellerCopy Pro 얼리버드 혜택</h3>
-        <p class="text-xs text-slate-500 mt-1">1인 셀러의 상품 등록 시간을 하루 10분으로 줄여드립니다</p>
+        <h3 class="text-lg font-extrabold text-slate-900">SellerCopy Pro 얼리버드 승인 신청</h3>
+        <p class="text-xs text-blue-600 font-bold mt-1">🔒 운영자(대표님) 1:1 직접 검토 승인제</p>
       </div>
-      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-5 space-y-2.5 text-xs text-slate-700">
-        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>일일 무제한</strong> 고품질 AI 카피 & SEO 생성</span></div>
-        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>엑셀 대량 업로드</strong> (한 번에 50개 상품 일괄 생성)</span></div>
-        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>네이버 실시간 급상승 쇼핑 키워드 매칭 엔진</span></div>
-        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>Gemini 1.5 Pro & Claude 3.5 Sonnet 프리미엄 엔진 우선 배정</span></div>
+
+      <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 mb-4 space-y-2 text-xs text-slate-700">
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>일일 무제한</strong> AI 카피 & 마케팅 릴스 대본 생성</span></div>
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span><strong>엑셀 대량 업로드</strong> (50개 상품 원클릭 일괄 완성)</span></div>
+        <div class="flex items-center space-x-2"><span class="text-emerald-500 font-bold">✓</span><span>CS 방어 답변서 & 무제한 마진 정산서 보관</span></div>
       </div>
-      <div class="text-center mb-5">
+
+      <div class="text-center mb-4">
         <span class="text-xs text-slate-400 line-through">정가 월 29,000원</span>
         <div class="text-2xl font-black text-blue-600 mt-0.5">월 9,900원 <span class="text-xs font-normal text-slate-500">(얼리버드 평생 할인)</span></div>
       </div>
+
       <div class="space-y-3">
         <div>
           <label for="waitlist-contact-input" class="block text-xs font-semibold text-slate-700 mb-1">
-            할인 알림 받을 연락처 (이메일 또는 카톡ID/전화번호)
+            승인 결과 및 할인 링크를 받으실 연락처 <span class="text-red-500">*</span>
           </label>
-          <input type="text" id="waitlist-contact-input" placeholder="example@naver.com 또는 010-0000-0000" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-[10px] text-slate-400 mt-1">* 스팸 없이 Pro 정식 출시 시 50% 할인 링크만 1회 안내드립니다.</p>
+          <input type="text" id="waitlist-contact-input" placeholder="카카오톡 ID 또는 휴대폰 번호 / 이메일" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
+            * 무분별한 자동 카드결제 방지를 위해, 대표님이 직접 신청서를 검토 후 24시간 내로 카톡/문자로 1:1 승인 쿠폰 링크를 발송해 드립니다.
+          </p>
         </div>
+
         <button type="button" id="btn-submit-waitlist" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-md text-xs">
-          얼리버드 50% 평생할인 예약하기 (0원)
+          대표님께 승인 검토 요청하기 (0원)
         </button>
         <button type="button" class="btn-close-modal w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl transition-colors text-xs" data-target="modal-upgrade">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Approval Modal (대표님 전용 결제 승인 관리함) -->
+  <div id="modal-admin" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div>
+          <h3 class="text-base font-bold text-slate-900 flex items-center">
+            <span class="mr-2">👑</span> 대표님 전용 결제 승인 관리함
+          </h3>
+          <p class="text-xs text-slate-400 mt-0.5">신청 내역을 확인하고 승인(Confirm) 처리하는 운영자 패널입니다.</p>
+        </div>
+        <button type="button" id="btn-admin-clear" class="text-xs text-red-500 hover:underline">목록 비우기</button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scrollbar" id="admin-lead-list">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 mt-4 flex items-center space-x-2">
+        <button type="button" id="btn-export-leads" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2.5 rounded-xl text-xs transition-colors">
+          신청자 명단 엑셀(CSV) 다운로드
+        </button>
+        <button type="button" class="btn-close-modal bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2.5 rounded-xl text-xs" data-target="modal-admin">
           닫기
         </button>
       </div>
@@ -417,30 +762,7 @@
     </div>
   </div>
 
-  <!-- Bulk Modal -->
-  <div id="modal-bulk" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
-      <div class="text-center mb-4">
-        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        </div>
-        <h3 class="text-base font-extrabold text-slate-900">엑셀/CSV 대량 일괄 생성</h3>
-        <p class="text-xs text-slate-500 mt-1">상품 50개 리스트를 업로드하면 3분 만에 카피와 태그 엑셀 완성</p>
-      </div>
-      <div class="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center bg-slate-50/50 mb-4">
-        <p class="text-xs font-semibold text-slate-700">엑셀 (.xlsx, .csv) 파일 끌어다 놓기</p>
-        <p class="text-[11px] text-slate-400 mt-1">이 기능은 Pro 요금제 전용 기능입니다.</p>
-      </div>
-      <div class="space-y-2">
-        <button type="button" id="btn-bulk-to-pro" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl transition-all text-xs">
-          Pro 버전 신청하고 대량 생성 기능 열기
-        </button>
-        <button type="button" class="btn-close-modal w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2 rounded-xl transition-colors text-xs" data-target="modal-bulk">닫기</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- API Modal (Gemini Focused) -->
+  <!-- API Modal -->
   <div id="modal-api" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
@@ -450,38 +772,18 @@
         </div>
         <button type="button" class="btn-close-modal text-slate-400 hover:text-slate-600" data-target="modal-api">✕</button>
       </div>
-      
       <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-        구글 계정만 있으면 <strong>카드 등록 없이 하루 1,500회 완전 무료</strong>로 사용할 수 있습니다. 키를 등록하면 실시간 최신 AI가 작동합니다.
+        구글 계정만 있으면 <strong>카드 등록 없이 하루 1,500회 완전 무료</strong>로 사용할 수 있습니다.
       </p>
-
-      <div class="p-3 bg-blue-50/70 border border-blue-100 rounded-xl mb-4 text-[11px] text-blue-900 space-y-1">
-        <div class="font-bold flex items-center">
-          <span>💡 무료 API 키 발급 방법 (1분)</span>
-        </div>
-        <p>1. <a href="https://aistudio.google.com/" target="_blank" class="text-blue-700 underline font-bold">Google AI Studio</a>에 접속해 구글 로그인합니다.</p>
-        <p>2. <strong>Get API key</strong> → <strong>Create API key</strong>를 누르고 복사합니다.</p>
-      </div>
-
       <div class="space-y-3 mb-5">
         <div>
-          <label for="input-gemini-key" class="block text-xs font-semibold text-slate-700 mb-1">
-            Google Gemini API Key <span class="text-blue-600 font-bold">(무료)</span>
-          </label>
+          <label for="input-gemini-key" class="block text-xs font-semibold text-slate-700 mb-1">Google Gemini API Key</label>
           <input type="password" id="input-gemini-key" placeholder="AIzaSy..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono">
         </div>
-        <p class="text-[11px] text-slate-400">
-          * 입력한 키는 외부 서버로 전송되지 않고 본인 브라우저(localStorage)에만 안전하게 보관됩니다. 키가 없으면 내장 스마트 엔진이 자동 동작합니다.
-        </p>
       </div>
-
       <div class="flex space-x-2">
-        <button type="button" id="btn-save-api" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">
-          저장하고 실시간 AI 켜기
-        </button>
-        <button type="button" id="btn-clear-api" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors">
-          초기화
-        </button>
+        <button type="button" id="btn-save-api" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">저장하기</button>
+        <button type="button" id="btn-clear-api" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors">초기화</button>
       </div>
     </div>
   </div>
@@ -492,44 +794,35 @@
     <span id="toast-message">클립보드에 복사되었습니다!</span>
   </div>
 
+  <!-- SCRIPT -->
   <script>
     (function() {
       const STORAGE_KEY_QUOTA = 'sellercopy_quota_v1';
       const STORAGE_KEY_HISTORY = 'sellercopy_history_v1';
       const STORAGE_KEY_GEMINI = 'sellercopy_gemini_key_v1';
+      const STORAGE_KEY_LEADS = 'sellercopy_waitlist_leads';
 
       let currentQuota = 5;
       let historyList = [];
       let activeResult = null;
       let geminiApiKey = '';
+      let activeRole = 'copywriter';
 
+      // Elements
       const headerQuotaText = document.getElementById('header-quota-text');
-      const form = document.getElementById('generator-form');
-      const productNameInput = document.getElementById('product-name');
-      const nameLengthText = document.getElementById('name-length');
-      const feature1Input = document.getElementById('feature-1');
-      const feature2Input = document.getElementById('feature-2');
-      const feature3Input = document.getElementById('feature-3');
-      const targetAudienceInput = document.getElementById('target-audience');
-      const platformSelect = document.getElementById('platform-select');
-      const categorySelect = document.getElementById('category-select');
-
-      const stateEmpty = document.getElementById('state-empty');
-      const stateLoading = document.getElementById('state-loading');
-      const stateResults = document.getElementById('state-results');
-      const btnCopyAll = document.getElementById('btn-copy-all');
-      const btnGenerate = document.getElementById('btn-generate');
-      const generateText = document.getElementById('generate-text');
-
-      const headlinesContainer = document.getElementById('headlines-container');
-      const copyBodyContent = document.getElementById('copy-body-content');
-      const tagsChipsContainer = document.getElementById('tags-chips-container');
-      const coupangTitleText = document.getElementById('coupang-title-text');
-      const coupangCharCount = document.getElementById('coupang-char-count');
       const aiEngineBadge = document.getElementById('ai-engine-badge');
+      const badgeAdminCount = document.getElementById('badge-admin-count');
       const btnApiText = document.getElementById('btn-api-text');
 
-      function initState() {
+      // Role buttons
+      const roleButtons = document.querySelectorAll('.role-btn');
+      const roleDescText = document.getElementById('role-desc-text');
+      const sectionCopywriter = document.getElementById('section-role-copywriter');
+      const sectionMarketer = document.getElementById('section-role-marketer');
+      const sectionCs = document.getElementById('section-role-cs');
+      const sectionMargin = document.getElementById('section-role-margin');
+
+      function initApp() {
         try {
           const savedQuota = localStorage.getItem(STORAGE_KEY_QUOTA);
           if (savedQuota !== null) {
@@ -541,24 +834,34 @@
 
           geminiApiKey = localStorage.getItem(STORAGE_KEY_GEMINI) || '';
           updateApiBadge();
+          updateAdminBadge();
         } catch (e) {}
         updateQuotaDisplay();
+        calculateMargin();
       }
 
       function updateApiBadge() {
         if (geminiApiKey) {
           aiEngineBadge.textContent = 'Gemini 1.5 연결됨';
           aiEngineBadge.className = 'text-[10px] uppercase font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded tracking-wider';
-          btnApiText.textContent = 'Gemini 설정(완료)';
+          if (btnApiText) btnApiText.textContent = 'Gemini 설정(완료)';
         } else {
           aiEngineBadge.textContent = '스마트 엔진';
           aiEngineBadge.className = 'text-[10px] uppercase font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded tracking-wider';
-          btnApiText.textContent = 'Gemini API 연동';
+          if (btnApiText) btnApiText.textContent = 'Gemini API';
         }
       }
 
       function updateQuotaDisplay() {
         if (headerQuotaText) headerQuotaText.textContent = `${currentQuota} / 5`;
+      }
+
+      function updateAdminBadge() {
+        try {
+          const leads = JSON.parse(localStorage.getItem(STORAGE_KEY_LEADS) || '[]');
+          const pending = leads.filter(l => !l.approved).length;
+          if (badgeAdminCount) badgeAdminCount.textContent = pending.toString();
+        } catch (e) {}
       }
 
       function consumeQuota() {
@@ -608,6 +911,62 @@
           showToast('복사에 실패했습니다. 수동으로 복사해주세요.', false);
         }
       }
+
+      // ========================================================
+      // ROLE SWITCHING
+      // ========================================================
+      roleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          roleButtons.forEach(b => {
+            b.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+            b.classList.add('bg-slate-100', 'text-slate-700');
+          });
+          btn.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-slate-100', 'text-slate-700');
+
+          activeRole = btn.dataset.role;
+          sectionCopywriter.classList.toggle('hidden', activeRole !== 'copywriter');
+          sectionMarketer.classList.toggle('hidden', activeRole !== 'marketer');
+          sectionCs.classList.toggle('hidden', activeRole !== 'cs');
+          sectionMargin.classList.toggle('hidden', activeRole !== 'margin');
+
+          if (activeRole === 'copywriter') {
+            roleDescText.textContent = '* 네이버 스마트스토어 & 쿠팡 전환율 최적화 카피와 10개 태그를 생성합니다.';
+          } else if (activeRole === 'marketer') {
+            roleDescText.textContent = '* 인스타그램 30초 릴스 촬영 대본, 카드뉴스 캡션, 알림톡을 3초 만에 기획합니다.';
+          } else if (activeRole === 'cs') {
+            roleDescText.textContent = '* 악성 1점 리뷰나 불만 문의에 대해 법적 문제 없는 모범 방어 답변서를 작성합니다.';
+          } else if (activeRole === 'margin') {
+            roleDescText.textContent = '* 플랫폼 수수료, 부가세, 배송비를 공제한 실수령 순마진을 1초 만에 계산합니다.';
+          }
+        });
+      });
+
+      // ========================================================
+      // ROLE 1: COPYWRITER LOGIC
+      // ========================================================
+      const formCopy = document.getElementById('generator-form');
+      const productNameInput = document.getElementById('product-name');
+      const nameLengthText = document.getElementById('name-length');
+      const feature1Input = document.getElementById('feature-1');
+      const feature2Input = document.getElementById('feature-2');
+      const feature3Input = document.getElementById('feature-3');
+      const targetAudienceInput = document.getElementById('target-audience');
+      const platformSelect = document.getElementById('platform-select');
+      const categorySelect = document.getElementById('category-select');
+
+      const stateEmpty = document.getElementById('state-empty');
+      const stateLoading = document.getElementById('state-loading');
+      const stateResults = document.getElementById('state-results');
+      const btnCopyAll = document.getElementById('btn-copy-all');
+      const btnGenerate = document.getElementById('btn-generate');
+      const generateText = document.getElementById('generate-text');
+
+      const headlinesContainer = document.getElementById('headlines-container');
+      const copyBodyContent = document.getElementById('copy-body-content');
+      const tagsChipsContainer = document.getElementById('tags-chips-container');
+      const coupangTitleText = document.getElementById('coupang-title-text');
+      const coupangCharCount = document.getElementById('coupang-char-count');
 
       const presets = {
         tumbler: {
@@ -677,7 +1036,6 @@
         });
       });
 
-      // Built-in Smart Fallback Engine
       function generateCopyFallback(formData) {
         const { name, f1, f2, f3, target, platform, category, tone } = formData;
         const targetClean = target || '일상의 질을 높이고 싶은 분';
@@ -738,76 +1096,6 @@
         };
       }
 
-      // Live Google Gemini API Integration
-      async function generateWithGemini(formData, apiKey) {
-        const prompt = `당신은 네이버 스마트스토어와 쿠팡 판매 전환율 1위의 전문 이커머스 카피라이터입니다.
-아래 상품 정보를 바탕으로 반드시 순수 JSON 포맷으로만 응답해주세요. 마크다운 따옴표나 기타 설명은 일절 생략하세요.
-
-[상품 정보]
-- 상품명: ${formData.name}
-- 핵심 스펙 1: ${formData.f1}
-- 핵심 스펙 2: ${formData.f2}
-- 핵심 스펙 3: ${formData.f3}
-- 타깃 고객: ${formData.target || '해당 제품을 필요로 하는 고객'}
-- 등록 플랫폼: ${formData.platform}
-- 카테고리: ${formData.category}
-- 톤앤매너: ${formData.tone}
-
-[필수 JSON 구조]:
-{
-  "headlines": [
-    {"type": "A안 (문제 공감 & 충격 해결)", "text": "후킹 헤드라인"},
-    {"type": "B안 (압도적 혜택 & 숫자 강조)", "text": "혜택 헤드라인"},
-    {"type": "C안 (사회적 증거 & 필수품 유도)", "text": "사회적증거 헤드라인"}
-  ],
-  "bodyParagraphs": [
-    {
-      "section": "1. Attention (문제 제기 & 공감)",
-      "heading": "소제목",
-      "body": "공감 문장"
-    },
-    {
-      "section": "2. Interest & Desire (비교불가 3대 특장점)",
-      "heading": "특장점 소제목",
-      "bullets": ["✓ POINT 01 : ...", "✓ POINT 02 : ...", "✓ POINT 03 : ..."],
-      "body": "신뢰 문장"
-    },
-    {
-      "section": "3. Action (안심 구매 & 빠른 출고)",
-      "heading": "클로징 소제목",
-      "body": "행동 유도 문장"
-    }
-  ],
-  "tags": ["네이버쇼핑등록가능태그1", "태그2", "태그3", "태그4", "태그5", "태그6", "태그7", "태그8", "태그9", "태그10"],
-  "coupangTitle": "쿠팡 50자 이내 최적화 상품명"
-}`;
-
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              temperature: 0.7,
-              responseMimeType: "application/json"
-            }
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error('Gemini API 호출 실패: ' + response.statusText);
-        }
-
-        const data = await response.json();
-        const candidateText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!candidateText) throw new Error('응답 텍스트 없음');
-
-        const parsed = JSON.parse(candidateText);
-        parsed.timestamp = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-        return parsed;
-      }
-
       function renderResults(data) {
         activeResult = data;
         headlinesContainer.innerHTML = '';
@@ -864,11 +1152,11 @@
         try { localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(historyList)); } catch (e) {}
       }
 
-      form.addEventListener('submit', async (e) => {
+      formCopy.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (currentQuota <= 0) {
           openModal('modal-upgrade');
-          showToast('오늘의 무료 크레딧이 모두 소진되었습니다. Pro를 신청하세요.', false);
+          showToast('오늘의 무료 크레딧이 소진되었습니다. Pro 승인을 신청하세요.', false);
           return;
         }
 
@@ -887,90 +1175,87 @@
         stateResults.classList.add('hidden');
         stateLoading.classList.remove('hidden');
         btnGenerate.disabled = true;
-        generateText.textContent = geminiApiKey ? 'Gemini AI 실시간 생성 중...' : '카피 및 태그 생성 중...';
+        generateText.textContent = '카피 및 태그 생성 중...';
 
         const stepTitle = document.getElementById('loading-step-title');
         const stepDesc = document.getElementById('loading-step-desc');
         const loadBar = document.getElementById('loading-bar');
 
         loadBar.style.width = '30%';
-        stepTitle.textContent = geminiApiKey ? '1/3 구글 Gemini AI 모델에 프롬프트 전달 중...' : '1/3 상품 스펙 및 타깃 페인포인트 분석 중...';
+        stepTitle.textContent = '1/3 상품 스펙 및 타깃 분석 중...';
 
         setTimeout(() => {
           loadBar.style.width = '70%';
           stepTitle.textContent = '2/3 네이버 쇼핑 검색 알고리즘 태그 매칭 중...';
-          stepDesc.textContent = '전환율 높은 헤드카피 3종과 스마트에디터 서식을 구성합니다.';
-        }, 800);
+        }, 600);
 
         try {
           let results = null;
           let generatedWithAI = false;
 
-          // 1차 시도: Vercel 서버리스 API (/api/generate) 호출
           try {
-            const apiRes = await fetch("/api/generate", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
+            const apiRes = await fetch('/api/generate', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(formData)
             });
             if (apiRes.ok) {
               results = await apiRes.json();
-              results.timestamp = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+              results.timestamp = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
               generatedWithAI = true;
             }
-          } catch (apiErr) {
-            console.log("서버리스 API 미설정 또는 호출 실패:", apiErr);
-          }
+          } catch (apiErr) {}
 
-          // 2차 시도: 사용자가 브라우저에 직접 등록한 Gemini API Key가 있는 경우
-          if (!results && geminiApiKey) {
-            try {
-              results = await generateWithGemini(formData, geminiApiKey);
-              generatedWithAI = true;
-            } catch (geminiErr) {
-              console.warn("개인 Gemini API 호출 실패:", geminiErr);
-            }
-          }
-
-          // 3차 시도: AI 호출 불가 시 내장 스마트 카피 엔진으로 안전하게 자동 전환 (오류 없음)
           if (!results) {
-            await new Promise(r => setTimeout(r, 1200));
+            await new Promise(r => setTimeout(r, 1000));
             results = generateCopyFallback(formData);
           }
 
-          loadBar.style.width = "100%";
+          loadBar.style.width = '100%';
           consumeQuota();
 
-          stateLoading.classList.add("hidden");
-          stateResults.classList.remove("hidden");
+          stateLoading.classList.add('hidden');
+          stateResults.classList.remove('hidden');
           btnGenerate.disabled = false;
-          generateText.textContent = "✨ 3초 만에 상세페이지 카피 & SEO 태그 생성";
+          generateText.textContent = '✨ 3초 만에 상세페이지 카피 & SEO 태그 생성';
           btnCopyAll.disabled = false;
           renderResults(results);
-          showToast(generatedWithAI ? "✨ Gemini 1.5 AI 실시간 카피 생성 완료!" : "스마트 엔진으로 카피가 안전하게 생성되었습니다!");
+          showToast(generatedWithAI ? '✨ Gemini AI 실시간 카피 생성 완료!' : '스마트 엔진으로 카피가 안전하게 생성되었습니다!');
         } catch (err) {
-          console.error("생성 에러:", err);
           const fallback = generateCopyFallback(formData);
           consumeQuota();
-          stateLoading.classList.add("hidden");
-          stateResults.classList.remove("hidden");
+          stateLoading.classList.add('hidden');
+          stateResults.classList.remove('hidden');
           btnGenerate.disabled = false;
-          generateText.textContent = "✨ 3초 만에 상세페이지 카피 & SEO 태그 생성";
           btnCopyAll.disabled = false;
           renderResults(fallback);
-          showToast("스마트 엔진으로 안전하게 카피를 생성했습니다.");
         }
       });
 
       btnCopyAll.addEventListener('click', () => {
         if (!activeResult) return;
-        let allText = `[메인 헤드카피 추천]\n1) ${activeResult.headlines[0].text}\n2) ${activeResult.headlines[1].text}\n3) ${activeResult.headlines[2].text}\n\n[상세페이지 본문 (스마트에디터 ONE 서식)]\n`;
+        let allText = `[메인 헤드카피 추천]
+1) ${activeResult.headlines[0].text}
+2) ${activeResult.headlines[1].text}
+3) ${activeResult.headlines[2].text}
+
+[상세페이지 본문 (스마트에디터 ONE 서식)]
+`;
         activeResult.bodyParagraphs.forEach(p => {
-          allText += `\n${p.heading}\n`;
-          if (p.bullets) p.bullets.forEach(b => allText += `${b}\n`);
-          allText += `${p.body}\n`;
+          allText += `
+${p.heading}
+`;
+          if (p.bullets) p.bullets.forEach(b => allText += `${b}
+`);
+          allText += `${p.body}
+`;
         });
-        allText += `\n[네이버 쇼핑 등록 태그]\n${activeResult.tags.join(', ')}\n\n[쿠팡 상품명]\n${activeResult.coupangTitle}`;
+        allText += `
+[네이버 쇼핑 등록 태그]
+${activeResult.tags.join(', ')}
+
+[쿠팡 상품명]
+${activeResult.coupangTitle}`;
         copyText(allText, '전체 결과물이 클립보드에 복사되었습니다!');
       });
 
@@ -978,16 +1263,20 @@
         if (!activeResult) return;
         let text = '';
         activeResult.bodyParagraphs.forEach(p => {
-          text += `\n${p.heading}\n`;
-          if (p.bullets) p.bullets.forEach(b => text += `${b}\n`);
-          text += `${p.body}\n`;
+          text += `
+${p.heading}
+`;
+          if (p.bullets) p.bullets.forEach(b => text += `${b}
+`);
+          text += `${p.body}
+`;
         });
         copyText(text.trim(), '상세페이지 본문이 복사되었습니다!');
       });
 
       document.getElementById('btn-copy-tags').addEventListener('click', () => {
         if (!activeResult) return;
-        copyText(activeResult.tags.join(', '), '10개 검색 태그가 쉼표형식으로 복사되었습니다!');
+        copyText(activeResult.tags.join(', '), '10개 검색 태그가 복사되었습니다!');
       });
 
       document.getElementById('btn-copy-coupang-title').addEventListener('click', () => {
@@ -995,6 +1284,204 @@
         copyText(activeResult.coupangTitle, '쿠팡 상품명이 복사되었습니다!');
       });
 
+      // ========================================================
+      // ROLE 2: MARKETER KIM LOGIC
+      // ========================================================
+      const formMk = document.getElementById('marketer-form');
+      const mkProductName = document.getElementById('mk-product-name');
+      const mkFeature = document.getElementById('mk-feature');
+      const mkTarget = document.getElementById('mk-target');
+      const mkEmpty = document.getElementById('mk-output-empty');
+      const mkResult = document.getElementById('mk-output-result');
+      const btnCopyMkAll = document.getElementById('btn-copy-mk-all');
+
+      formMk.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pName = mkProductName.value.trim();
+        const feat = mkFeature.value.trim();
+        const target = mkTarget.value.trim() || '일상의 질을 높이고 싶은 고객';
+        const focus = document.querySelector('input[name="mk-focus"]:checked').value;
+
+        // Generate Reels Script
+        const reelsScript = `[00:00 ~ 00:03 후킹 (화면 정지 유도)]
+(비주얼: 얼음 가득 찬 텀블러를 거꾸로 뒤집고 세게 흔드는 장면)
+나레이션: "아직도 텀블러 가방에 넣을 때 샐까 봐 불안해하시는 분 계신가요?"
+
+[00:03 ~ 00:15 본문 시연 (충격 비교)]
+(비주얼: 타사 제품과 ${pName} 동시 얼음 보온 테스트)
+나레이션: "${feat}! 아침에 넣어둔 얼음이 퇴근할 때까지 그대로 남아있습니다. 완전 밀폐 실리콘 패킹으로 거꾸로 털어도 1방울도 안 샙니다."
+
+[00:15 ~ 00:25 타깃 공감 (${target})]
+(비주얼: 출퇴근 지하철 및 사무실 책상에 올려놓은 깔끔한 데스크 샷)
+나레이션: "${target}이라면 무거운 텀블러 대신 이 손잡이 일체형 하나로 올여름 끝납니다."
+
+[00:25 ~ 00:30 엔딩 콜투액션 (전환)]
+(비주얼: 프로필 링크 클릭 유도 모션 그래픽)
+나레이션: "프로필 링크에서 얼리버드 한정 1+1 혜택 확인해보세요!"`;
+
+        const instaCaption = `출근길에 산 아아, 점심만 되면 미지근해져서 스트레스 받으셨죠? ☕️❄️
+
+직접 써보고 감탄한 【${pName}】
+
+💡 김팀장 추천 3대 포인트:
+1️⃣ ${feat}
+2️⃣ 하루 종일 변함없는 얼음 지속력
+3️⃣ 가방에 넣어도 안심되는 완전 밀폐
+
+바쁜 ${target} 대표님들을 위한 필수 데일리아이템!
+지금 프로필 링크에서 특별 혜택으로 만나보세요.
+
+#${pName.split(' ')[0]} #텀블러추천 #직장인필수템 #오피스꿀템 #출근러필수 #보온보냉텀블러 #얼죽아 #선물추천 #살림꿀팁 #스마트쇼핑 #신상품 #가성비템 #데스크테리어 #감성텀블러 #오늘의발견`;
+
+        const reviewTalk = `[${pName} 만족도 조사 및 감사 선물 안내]
+
+고객님, 안녕하세요! 소중한 주문 진심으로 감사드립니다.
+
+보내드린 ${pName}은 마음에 드셨을까요?
+혹시 사용하시며 불편하신 점이 있으셨다면 언제든 편하게 회신 주세요. 가장 빠르게 도와드리겠습니다!
+
+🎁 구매 후기 작성 시 즉시 혜택:
+사진 1장과 함께 정성스러운 리뷰를 남겨주시면 네이버 포인트 1,000원을 즉시 적립해 드립니다. 고객님의 솔직한 한 줄이 저희에게 가장 큰 힘이 됩니다. 감사합니다!`;
+
+        document.getElementById('mk-reels-text').textContent = reelsScript;
+        document.getElementById('mk-insta-text').textContent = instaCaption;
+        document.getElementById('mk-review-text').textContent = reviewTalk;
+
+        mkEmpty.classList.add('hidden');
+        mkResult.classList.remove('hidden');
+        btnCopyMkAll.disabled = false;
+        showToast('🔥 김팀장의 마케팅 패키지가 생성되었습니다!');
+      });
+
+      btnCopyMkAll.addEventListener('click', () => {
+        const text = `[30초 릴스 대본]
+${document.getElementById('mk-reels-text').textContent}
+
+[인스타그램 피드]
+${document.getElementById('mk-insta-text').textContent}
+
+[리뷰 유도 알림톡]
+${document.getElementById('mk-review-text').textContent}`;
+        copyText(text, '마케팅 패키지 전체가 복사되었습니다!');
+      });
+
+      // Individual copy buttons
+      document.querySelectorAll('.btn-copy-box').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.dataset.target;
+          const text = document.getElementById(targetId).textContent;
+          copyText(text);
+        });
+      });
+
+      // ========================================================
+      // ROLE 3: CS PARK LOGIC
+      // ========================================================
+      const formCs = document.getElementById('cs-form');
+      const csComplaintInput = document.getElementById('cs-complaint-input');
+      const csStoreNameInput = document.getElementById('cs-store-name');
+      const csEmpty = document.getElementById('cs-output-empty');
+      const csResult = document.getElementById('cs-output-result');
+
+      const csPresets = {
+        damage: "박스 다 찌그러져서 왔고 제품 겉면에 기스 나있네요. 배송 포장 이따위로 합니까? 당장 환불해주세요.",
+        delay: "주문한 지 일주일이 넘었는데 아직도 배송 출발 안 함? 고객센터 연결도 안 되고 장난치나요?",
+        change: "생각보다 색상이 화면이랑 다르고 마음에 안 드네요. 단순 변심 반품 택배비 무료로 해주세요."
+      };
+
+      document.querySelectorAll('.cs-preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          csComplaintInput.value = csPresets[btn.dataset.preset];
+          showToast('불만 예시 내용이 입력되었습니다.');
+        });
+      });
+
+      formCs.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const complaint = csComplaintInput.value.trim();
+        const sName = csStoreNameInput.value.trim() || '스토어 고객감동팀';
+
+        const ansA = `안녕하세요, ${sName} 담당자입니다.
+
+먼저 저희 제품을 믿고 기다려주셨을 텐데, 파손 및 불편을 겪게 해 드려 진심으로 고개 숙여 사과드립니다.
+
+배송 과정 중 물류센터 완충재 부족으로 인해 충격이 전달된 것으로 파악되며, 고객님께서 느끼셨을 당혹감과 실망감에 마음이 무겁습니다.
+
+남겨주신 사진 확인 후 즉시 [새 제품 무료 맞교환] 또는 [전액 즉시 환불] 처리를 약속드립니다. 반품 수거 접수는 저희가 기사님께 직접 요청해 두었으니 제품만 현관 앞에 놓아주시면 됩니다.
+
+이번 불편을 계기로 포장 검수 프로세스를 2배로 강화하겠습니다. 다시 한번 소중한 시간 내어 말씀 주셔서 감사드리며, 하루빨리 만족스러운 처리를 도와드리겠습니다.`;
+
+        const ansB = `안녕하세요, ${sName}입니다.
+
+먼저 배송 과정 중 발생한 불편으로 심려를 끼쳐드려 대단히 죄송합니다.
+
+저희 스토어는 전 제품 3중 완충 에어캡 포장 후 우체국/CJ대한통운을 통해 안전 출고를 원칙으로 하고 있으나, 이동 중 외부 압력으로 외관 손상이 발생한 것으로 보입니다.
+
+제품 하자로 인한 사안은 전자상거래법 및 스토어 규정에 의거하여 100% 무상 교환 및 환불이 정상 보장됩니다. 상단의 [교환/반품 접수] 버튼을 눌러주시면 배송비 부담 없이 즉시 신속 처리 진행됩니다.
+
+저희를 믿고 찾아주시는 모든 고객님들께 동일한 원칙과 책임 있는 사후 처리를 다하겠습니다. 감사합니다.`;
+
+        document.getElementById('cs-ans-a').textContent = ansA;
+        document.getElementById('cs-ans-b').textContent = ansB;
+        csEmpty.classList.add('hidden');
+        csResult.classList.remove('hidden');
+        showToast('🛡️ 박실장의 방어 답변 2종이 완성되었습니다!');
+      });
+
+      // ========================================================
+      // ROLE 4: MARGIN CALCULATOR LOGIC
+      // ========================================================
+      const mgPlatform = document.getElementById('mg-platform');
+      const mgSellPrice = document.getElementById('mg-sell-price');
+      const mgCostPrice = document.getElementById('mg-cost-price');
+      const mgCustShip = document.getElementById('mg-cust-ship');
+      const mgRealShip = document.getElementById('mg-real-ship');
+      const mgPackCost = document.getElementById('mg-pack-cost');
+
+      function calculateMargin() {
+        const pRate = parseFloat(mgPlatform.value) || 0.056;
+        const sell = parseFloat(mgSellPrice.value) || 0;
+        const cost = parseFloat(mgCostPrice.value) || 0;
+        const cShip = parseFloat(mgCustShip.value) || 0;
+        const rShip = parseFloat(mgRealShip.value) || 0;
+        const pack = parseFloat(mgPackCost.value) || 0;
+
+        const totalRev = sell + cShip;
+        const fee = Math.round(totalRev * pRate);
+        const vat = Math.round((sell - cost) * 0.1); // estimated VAT
+        const safeVat = vat > 0 ? vat : 0;
+        const netProfit = totalRev - cost - fee - rShip - pack - safeVat;
+        const marginRate = sell > 0 ? ((netProfit / sell) * 100).toFixed(1) : '0';
+
+        document.getElementById('res-total-rev').textContent = `${totalRev.toLocaleString()}원`;
+        document.getElementById('res-fee').textContent = `-${fee.toLocaleString()}원`;
+        document.getElementById('res-cost').textContent = `-${cost.toLocaleString()}원`;
+        document.getElementById('res-ship').textContent = `-${rShip.toLocaleString()}원`;
+        document.getElementById('res-pack').textContent = `-${pack.toLocaleString()}원`;
+        document.getElementById('res-vat').textContent = `-${safeVat.toLocaleString()}원`;
+        document.getElementById('res-net-profit').textContent = `${Math.round(netProfit).toLocaleString()}원`;
+        document.getElementById('res-margin-rate').textContent = `${marginRate}%`;
+
+        const badge = document.getElementById('res-margin-badge');
+        if (netProfit <= 0) {
+          badge.className = 'p-2.5 rounded-xl bg-red-100 text-red-800 text-xs font-bold text-center';
+          badge.textContent = '🚨 역마진 발생! 팔수록 손해 보는 가격 구조입니다. 판매가를 올리세요.';
+        } else if (parseFloat(marginRate) < 15) {
+          badge.className = 'p-2.5 rounded-xl bg-amber-100 text-amber-800 text-xs font-bold text-center';
+          badge.textContent = '⚠️ 마진 주의 구간 (15% 미만). 광고비 집행 시 역마진 위험이 있습니다.';
+        } else {
+          badge.className = 'p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-bold text-center';
+          badge.textContent = `🟢 건강한 마진 구조입니다 (순이익: ${Math.round(netProfit).toLocaleString()}원 / 마진율: ${marginRate}%)`;
+        }
+      }
+
+      [mgPlatform, mgSellPrice, mgCostPrice, mgCustShip, mgRealShip, mgPackCost].forEach(el => {
+        el.addEventListener('input', calculateMargin);
+      });
+
+      // ========================================================
+      // ADMIN & CONFIRM WORKFLOW
+      // ========================================================
       function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
       function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
@@ -1003,59 +1490,137 @@
       });
 
       document.getElementById('btn-open-upgrade').addEventListener('click', () => openModal('modal-upgrade'));
-      document.getElementById('btn-open-bulk').addEventListener('click', () => openModal('modal-bulk'));
-      document.getElementById('btn-bulk-to-pro').addEventListener('click', () => {
-        closeModal('modal-bulk');
-        openModal('modal-upgrade');
-      });
       document.getElementById('btn-open-api').addEventListener('click', () => {
         try { document.getElementById('input-gemini-key').value = localStorage.getItem(STORAGE_KEY_GEMINI) || ''; } catch (e) {}
         openModal('modal-api');
       });
 
-      document.getElementById('btn-save-api').addEventListener('click', () => {
-        const key = document.getElementById('input-gemini-key').value.trim();
-        try {
-          if (key) {
-            localStorage.setItem(STORAGE_KEY_GEMINI, key);
-            geminiApiKey = key;
-          } else {
-            localStorage.removeItem(STORAGE_KEY_GEMINI);
-            geminiApiKey = '';
-          }
-        } catch (e) {}
-        updateApiBadge();
-        closeModal('modal-api');
-        showToast(key ? 'Gemini AI 키가 저장되었습니다! 실시간 AI가 켜졌습니다.' : 'API 키 설정이 초기화되었습니다.');
-      });
-
-      document.getElementById('btn-clear-api').addEventListener('click', () => {
-        document.getElementById('input-gemini-key').value = '';
-        try {
-          localStorage.removeItem(STORAGE_KEY_GEMINI);
-          geminiApiKey = '';
-        } catch (e) {}
-        updateApiBadge();
-        showToast('Gemini API 키가 삭제되었습니다.');
-      });
-
-      document.getElementById("btn-submit-waitlist").addEventListener("click", () => {
-        const input = document.getElementById("waitlist-contact-input");
-        const contact = input ? input.value.trim() : "";
+      // User submits Waitlist (Reports to Owner)
+      document.getElementById('btn-submit-waitlist').addEventListener('click', () => {
+        const input = document.getElementById('waitlist-contact-input');
+        const contact = input ? input.value.trim() : '';
         if (!contact) {
-          showToast("연락처 또는 이메일을 입력해주세요.", false);
+          showToast('연락처(카톡ID/전화번호)를 입력해주세요.', false);
           return;
         }
+
         try {
-          const list = JSON.parse(localStorage.getItem("sellercopy_waitlist_leads") || "[]");
-          list.push({ contact: contact, date: new Date().toLocaleString("ko-KR") });
-          localStorage.setItem("sellercopy_waitlist_leads", JSON.stringify(list));
+          const list = JSON.parse(localStorage.getItem(STORAGE_KEY_LEADS) || '[]');
+          const newLead = {
+            id: Date.now(),
+            contact: contact,
+            date: new Date().toLocaleString('ko-KR'),
+            approved: false
+          };
+          list.unshift(newLead);
+          localStorage.setItem(STORAGE_KEY_LEADS, JSON.stringify(list));
         } catch (e) {}
-        if (input) input.value = "";
-        closeModal("modal-upgrade");
-        showToast("얼리버드 50% 할인 예약이 완료되었습니다! (출시 시 알림)", true);
+
+        if (input) input.value = '';
+        closeModal('modal-upgrade');
+        updateAdminBadge();
+        showToast('📋 운영자(대표님)에게 승인 검토 요청이 즉시 보고되었습니다!', true);
       });
 
+      // Admin Modal Open & List Render
+      document.getElementById('btn-open-admin').addEventListener('click', () => {
+        renderAdminLeads();
+        openModal('modal-admin');
+      });
+
+      function renderAdminLeads() {
+        const container = document.getElementById('admin-lead-list');
+        container.innerHTML = '';
+        let list = [];
+        try { list = JSON.parse(localStorage.getItem(STORAGE_KEY_LEADS) || '[]'); } catch (e) {}
+
+        if (list.length === 0) {
+          container.innerHTML = '<div class="text-center py-10 text-xs text-slate-400">아직 접수된 결제 승인 요청이 없습니다.</div>';
+          return;
+        }
+
+        list.forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'p-3 rounded-xl border flex items-center justify-between transition-all ' + (item.approved ? 'bg-emerald-50/60 border-emerald-200' : 'bg-slate-50 border-slate-200');
+          row.innerHTML = `
+            <div>
+              <div class="text-xs font-bold text-slate-900 flex items-center space-x-1.5">
+                <span>${item.contact}</span>
+                <span class="text-[10px] px-1.5 py-0.2 rounded font-extrabold ${item.approved ? 'bg-emerald-200 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                  ${item.approved ? '승인 완료 (컨펌)' : '검토 대기 중'}
+                </span>
+              </div>
+              <div class="text-[10px] text-slate-400 mt-0.5">신청일시: ${item.date}</div>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              ${!item.approved ? `
+                <button type="button" class="btn-confirm-lead text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm" data-id="${item.id}">
+                  ✓ 승인(Confirm)
+                </button>
+              ` : `
+                <button type="button" class="btn-copy-approval-msg text-xs bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-2.5 py-1.5 rounded-lg" data-contact="${item.contact}">
+                  카톡 안내문 복사
+                </button>
+              `}
+            </div>
+          `;
+
+          const confirmBtn = row.querySelector('.btn-confirm-lead');
+          if (confirmBtn) {
+            confirmBtn.addEventListener('click', () => {
+              item.approved = true;
+              localStorage.setItem(STORAGE_KEY_LEADS, JSON.stringify(list));
+              renderAdminLeads();
+              updateAdminBadge();
+              const msg = `안녕하세요 대표님! 셀러카피 AI 운영자입니다. 신청해주신 SellerCopy Pro 얼리버드 50% 할인 예약이 승인(Confirm)되었습니다. 평생 9,900원 결제 링크: https://sellercopyai.vercel.app/`;
+              copyText(msg, '승인 완료! 고객 발송용 카카오톡 안내 문구가 복사되었습니다.');
+            });
+          }
+
+          const copyMsgBtn = row.querySelector('.btn-copy-approval-msg');
+          if (copyMsgBtn) {
+            copyMsgBtn.addEventListener('click', () => {
+              const msg = `안녕하세요 대표님! 셀러카피 AI 운영자입니다. 신청해주신 SellerCopy Pro 얼리버드 50% 할인 예약이 승인되었습니다. 특별 할인 링크: https://sellercopyai.vercel.app/`;
+              copyText(msg, '고객 발송용 카카오톡 안내 문구가 클립보드에 복사되었습니다.');
+            });
+          }
+
+          container.appendChild(row);
+        });
+      }
+
+      document.getElementById('btn-admin-clear').addEventListener('click', () => {
+        if (confirm('승인함의 모든 신청 내역을 비우시겠습니까?')) {
+          localStorage.removeItem(STORAGE_KEY_LEADS);
+          renderAdminLeads();
+          updateAdminBadge();
+          showToast('승인 내역이 초기화되었습니다.');
+        }
+      });
+
+      document.getElementById('btn-export-leads').addEventListener('click', () => {
+        let list = [];
+        try { list = JSON.parse(localStorage.getItem(STORAGE_KEY_LEADS) || '[]'); } catch (e) {}
+        if (list.length === 0) {
+          showToast('내보낼 데이터가 없습니다.', false);
+          return;
+        }
+        let csv = '연락처,신청일시,승인여부
+';
+        list.forEach(item => {
+          csv += `"${item.contact}","${item.date}","${item.approved ? '승인완료' : '대기중'}"
+`;
+        });
+        const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `sellercopy_leads_${new Date().toISOString().slice(0,10)}.csv`;
+        a.click();
+        showToast('신청자 명단 CSV가 다운로드되었습니다.');
+      });
+
+      // History Modal render
       document.getElementById('btn-open-history').addEventListener('click', () => {
         renderHistoryList();
         openModal('modal-history');
@@ -1102,7 +1667,34 @@
         showToast('히스토리가 모두 삭제되었습니다.');
       });
 
-      initState();
+      // API Key handlers
+      document.getElementById('btn-save-api').addEventListener('click', () => {
+        const key = document.getElementById('input-gemini-key').value.trim();
+        try {
+          if (key) {
+            localStorage.setItem(STORAGE_KEY_GEMINI, key);
+            geminiApiKey = key;
+          } else {
+            localStorage.removeItem(STORAGE_KEY_GEMINI);
+            geminiApiKey = '';
+          }
+        } catch (e) {}
+        updateApiBadge();
+        closeModal('modal-api');
+        showToast(key ? 'Gemini AI 키가 저장되었습니다!' : 'API 키가 초기화되었습니다.');
+      });
+
+      document.getElementById('btn-clear-api').addEventListener('click', () => {
+        document.getElementById('input-gemini-key').value = '';
+        try {
+          localStorage.removeItem(STORAGE_KEY_GEMINI);
+          geminiApiKey = '';
+        } catch (e) {}
+        updateApiBadge();
+        showToast('Gemini API 키가 삭제되었습니다.');
+      });
+
+      initApp();
     })();
   </script>
 </body>
