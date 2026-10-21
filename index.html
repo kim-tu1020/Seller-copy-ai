@@ -896,36 +896,62 @@
         }, 800);
 
         try {
-          let results;
-          if (geminiApiKey) {
-            results = await generateWithGemini(formData, geminiApiKey);
-          } else {
-            // Fallback smart engine with realistic delay
-            await new Promise(r => setTimeout(r, 1600));
+          let results = null;
+          let generatedWithAI = false;
+
+          // 1차 시도: Vercel 서버리스 API (/api/generate) 호출
+          try {
+            const apiRes = await fetch("/api/generate", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData)
+            });
+            if (apiRes.ok) {
+              results = await apiRes.json();
+              results.timestamp = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+              generatedWithAI = true;
+            }
+          } catch (apiErr) {
+            console.log("서버리스 API 미설정 또는 호출 실패:", apiErr);
+          }
+
+          // 2차 시도: 사용자가 브라우저에 직접 등록한 Gemini API Key가 있는 경우
+          if (!results && geminiApiKey) {
+            try {
+              results = await generateWithGemini(formData, geminiApiKey);
+              generatedWithAI = true;
+            } catch (geminiErr) {
+              console.warn("개인 Gemini API 호출 실패:", geminiErr);
+            }
+          }
+
+          // 3차 시도: AI 호출 불가 시 내장 스마트 카피 엔진으로 안전하게 자동 전환 (오류 없음)
+          if (!results) {
+            await new Promise(r => setTimeout(r, 1200));
             results = generateCopyFallback(formData);
           }
 
-          loadBar.style.width = '100%';
+          loadBar.style.width = "100%";
           consumeQuota();
 
-          stateLoading.classList.add('hidden');
-          stateResults.classList.remove('hidden');
+          stateLoading.classList.add("hidden");
+          stateResults.classList.remove("hidden");
           btnGenerate.disabled = false;
-          generateText.textContent = '✨ 3초 만에 상세페이지 카피 & SEO 태그 생성';
+          generateText.textContent = "✨ 3초 만에 상세페이지 카피 & SEO 태그 생성";
           btnCopyAll.disabled = false;
           renderResults(results);
-          showToast(geminiApiKey ? 'Gemini AI로 실시간 생성 완료! (무료)' : '카피 생성이 완료되었습니다!');
+          showToast(generatedWithAI ? "✨ Gemini 1.5 AI 실시간 카피 생성 완료!" : "스마트 엔진으로 카피가 안전하게 생성되었습니다!");
         } catch (err) {
-          console.warn('Gemini 호출 에러 -> 스마트 폴백으로 대체', err);
+          console.error("생성 에러:", err);
           const fallback = generateCopyFallback(formData);
           consumeQuota();
-          stateLoading.classList.add('hidden');
-          stateResults.classList.remove('hidden');
+          stateLoading.classList.add("hidden");
+          stateResults.classList.remove("hidden");
           btnGenerate.disabled = false;
-          generateText.textContent = '✨ 3초 만에 상세페이지 카피 & SEO 태그 생성';
+          generateText.textContent = "✨ 3초 만에 상세페이지 카피 & SEO 태그 생성";
           btnCopyAll.disabled = false;
           renderResults(fallback);
-          showToast('스마트 엔진으로 안전하게 카피를 생성했습니다.');
+          showToast("스마트 엔진으로 안전하게 카피를 생성했습니다.");
         }
       });
 
